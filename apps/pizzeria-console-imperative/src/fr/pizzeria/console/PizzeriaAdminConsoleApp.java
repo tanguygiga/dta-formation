@@ -74,11 +74,14 @@ public class PizzeriaAdminConsoleApp {
 				tableauPizza[numModif][0] = code_pizza;
 				tableauPizza[numModif][1] = nom_pizza;
 				tableauPizza[numModif][2] = prix_pizza;
+
 				for (int i = 0; i < tableauPizza.length; ++i) {
 					System.out.println(
 							tableauPizza[i][0] + " -> " + tableauPizza[i][1] + " (" + tableauPizza[i][2] + " €)");
 				}
+
 				break;
+
 			case 4:
 				longueur = tableauPizza.length;
 
