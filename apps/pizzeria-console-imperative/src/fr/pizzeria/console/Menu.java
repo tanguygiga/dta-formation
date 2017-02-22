@@ -1,8 +1,10 @@
 package fr.pizzeria.console;
 
+import java.util.List;
+
 public abstract class Menu {
-	private String titre = ("***** Pizzeria Administration *****");
-	private Liste[] listeMenus ;
+	String titre = ("***** Pizzeria Administration *****");
+	List<Menu> listeMenus = ;
 
 	public void demarrer()
 }
