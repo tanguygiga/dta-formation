@@ -6,7 +6,8 @@ public class PizzaDaoImpl implements IPizzaDao {
 
 	private Pizza[] allPizzas;
 
-	public PizzaDaoImpl() {
+	public PizzaDaoImpl(Pizza[] allPizzas) {
+		this.allPizzas = allPizzas;
 	}
 
 	@Override
@@ -28,12 +29,32 @@ public class PizzaDaoImpl implements IPizzaDao {
 	}
 
 	@Override
-	public boolean updatePizza(String codePizza, Pizza pizza) {
+	public boolean updatePizza(int idPizza, Pizza newPizza) {
+		int index = 0;
+		for (Pizza pizza : allPizzas) {
+			if (idPizza == (pizza.getId())) {
+				allPizzas[index] = newPizza;
+				return true;
+			}
+			index++;
+		}
 		return false;
 	}
 
 	@Override
-	public boolean deletePizza(String codePizza) {
+	public boolean deletePizza(int idPizza) {
+		int index = 0;
+		for (Pizza pizza : allPizzas) {
+			if (idPizza == (pizza.getId())) {
+				Pizza[] newAllPizzas = new Pizza[allPizzas.length - 1];
+				System.arraycopy(allPizzas, 0, newAllPizzas, 0, index);
+				System.arraycopy(allPizzas, index + 1, newAllPizzas, index, allPizzas.length - index - 1);
+				allPizzas = newAllPizzas;
+				Pizza.nbPizzas--;
+				return true;
+			}
+			index++;
+		}
 		return false;
 	}
 

@@ -8,8 +8,8 @@ public interface IPizzaDao {
 
 	boolean saveNewPizza(Pizza newPizza);
 
-	boolean updatePizza(String codePizza, Pizza pizza);
+	boolean updatePizza(int idPizza, Pizza pizza);
 
-	boolean deletePizza(String codePizza);
+	boolean deletePizza(int idPizza);
 
 }

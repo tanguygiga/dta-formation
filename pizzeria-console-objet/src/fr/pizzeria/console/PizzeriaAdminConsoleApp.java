@@ -6,8 +6,6 @@ import fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
 
-	}
-
 	public static void main(String[] args) {
 
 		// initialisation des variables
@@ -16,7 +14,13 @@ public class PizzeriaAdminConsoleApp {
 		String nomPizza;
 		Double prixPizza;
 		int longueurModif;
-
+		
+		public void afficher(Pizza[] tableauPizza) {
+			for (int i = 0; i < tableauPizza.length; ++i) {
+				System.out.println(i + 1 + ". " + tableauPizza[i].getCode() + " -> " + tableauPizza[i].getNom() + " ("
+						+ tableauPizza[i].getPrix() + " €)");
+			}
+		}
 		Pizza[] tableauPizza = { new Pizza(0, "PEP", "Pépéroni", 12.5), new Pizza(1, "MAR", "Margherita", 14.00),
 				new Pizza(2, "REI", "La Reine", 11.50), new Pizza(3, "FRO", "La 4 fromages", 12.00),
 				new Pizza(4, "CAN", "La cannibale", 12.50), new Pizza(5, "SAV", "La savoyarde", 13.00),
@@ -112,5 +116,10 @@ public class PizzeriaAdminConsoleApp {
 			}
 		} while (menu != 99);
 		System.out.println("Au revoir !");
+	}
+
+	private static void afficher(Object object) {
+		// TODO Auto-generated method stub
+
 	}
 }
