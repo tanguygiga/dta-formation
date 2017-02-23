@@ -1,0 +1,2 @@
+INDEX VERSION 1.129+C:\Users\ETY15\Documents\travail\dta-formation\pizzeria-console-objet\.metadata\.plugins\org.eclipse.jdt.core
+534778077.index
