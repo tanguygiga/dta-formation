@@ -9,13 +9,21 @@ public class ChatLoginStrategy implements ChatAuthController {
 	private ChatConversationModel model;
 
 	public ChatLoginStrategy(ViewComposite view, ChatConversationModel model) {
-		this.view = view;
+		this.setView(view);
 		this.model = model;
 	}
 
 	@Override
 	public void authenticate(String login) {
 		model.setLogin(login);
+	}
+
+	public ViewComposite getView() {
+		return view;
+	}
+
+	public void setView(ViewComposite view) {
+		this.view = view;
 	}
 
 }

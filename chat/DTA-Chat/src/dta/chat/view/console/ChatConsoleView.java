@@ -12,7 +12,7 @@ public class ChatConsoleView extends ViewComposite implements ChatObserver<ChatM
 
 	public ChatConsoleView(Scanner read) {
 
-		this.read = read;
+		this.setRead(read);
 
 		this.add(new ChatConsoleTitleView());
 		this.add(new ChatConsoleLoginView(read));
@@ -36,6 +36,14 @@ public class ChatConsoleView extends ViewComposite implements ChatObserver<ChatM
 
 		System.out.println(message.getLogin() + " : " + message.getText());
 
+	}
+
+	public Scanner getRead() {
+		return read;
+	}
+
+	public void setRead(Scanner read) {
+		this.read = read;
 	}
 
 }

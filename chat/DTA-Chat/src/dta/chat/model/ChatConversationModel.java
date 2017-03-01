@@ -1,6 +1,8 @@
 package dta.chat.model;
 
 import dta.chat.model.observer.ChatObservable;
+import dta.chat.model.socket.ChatClientException;
+import dta.chat.model.socket.ChatSocketImpl;
 
 public class ChatConversationModel extends ChatObservable<ChatMessage> {
 
@@ -17,11 +19,19 @@ public class ChatConversationModel extends ChatObservable<ChatMessage> {
 		notifyObservers(message);
 	}
 
+	ChatSocketImpl impl = new ChatSocketImpl();
+
 	public void sendMessage(String msg) {
 
 		ChatMessage message = new ChatMessage();
 		message.setLogin(login);
 		message.setText(msg);
+		try {
+			impl.sendMessage(message);
+		} catch (ChatClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		notifyObservers(message);
 	}
