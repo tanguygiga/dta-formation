@@ -12,7 +12,7 @@ public class ChatConsoleView extends ViewComposite implements ChatObserver<ChatM
 
 	public ChatConsoleView(Scanner read) {
 
-		this.setRead(read);
+		this.read = read;
 
 		this.add(new ChatConsoleTitleView());
 		this.add(new ChatConsoleLoginView(read));

@@ -8,37 +8,39 @@ public class ChatSocketImpl implements ChatSocket {
 
 	@Override
 	public void close() throws Exception {
-		// TODO Auto-generated method stub
+		clientSocket.close();
 
 	}
 
 	ClientSocket clientSocket;
 
-	public ChatSocketImpl() {
+	public ChatSocketImpl(String host, int port) throws ChatClientException {
 		super();
 		try {
-			clientSocket = new ClientSocket("localhost", 1800);
+			clientSocket = new ClientSocket(host, port);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ChatClientException("Problème lors de la création de la connection", e);
 		}
 	}
 
 	@Override
 	public void sendMessage(ChatMessage msg) throws ChatClientException {
 		try {
-			clientSocket.sendObject(msg.getLogin());
-			clientSocket.sendObject(msg.getText());
+			clientSocket.sendObject(msg);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new ChatClientException("Problème lors de l'envoi du message", e);
 		}
 
 	}
 
 	@Override
-	public ChatMessage readMessage() throws ChatClientException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public ChatMessage readMessage() throws ChatClientException, IOException {
+		try {
+			return (ChatMessage) clientSocket.readObject();
+		} catch (ClassNotFoundException e) {
+			throw new ChatClientException("Problème lors de la lecture du message", e);
 
+		}
+
+	}
 }

@@ -1,10 +1,20 @@
 package dta.chat.model;
 
+import java.io.IOException;
+
 import dta.chat.model.observer.ChatObservable;
 import dta.chat.model.socket.ChatClientException;
 import dta.chat.model.socket.ChatSocketImpl;
 
 public class ChatConversationModel extends ChatObservable<ChatMessage> {
+
+	ChatSocketImpl chatSocketImpl;
+
+	public ChatConversationModel(ChatSocketImpl impl) {
+		super();
+		this.chatSocketImpl = impl;
+
+	}
 
 	String login;
 
@@ -13,13 +23,11 @@ public class ChatConversationModel extends ChatObservable<ChatMessage> {
 
 		ChatMessage message = new ChatMessage();
 
-		message.setLogin("Vous vous êtes identifié sous le pseudo : ");
+		message.setLogin("Vous vous êtes identifié sous le pseudo");
 		message.setText(login);
 
 		notifyObservers(message);
 	}
-
-	ChatSocketImpl impl = new ChatSocketImpl();
 
 	public void sendMessage(String msg) {
 
@@ -27,12 +35,27 @@ public class ChatConversationModel extends ChatObservable<ChatMessage> {
 		message.setLogin(login);
 		message.setText(msg);
 		try {
-			impl.sendMessage(message);
+			chatSocketImpl.sendMessage(message);
 		} catch (ChatClientException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ChatClientException("Problème lors de l'envoi du message", e);
 		}
 
 		notifyObservers(message);
+	}
+
+	public void readMessage() {
+		new Thread(() -> {
+			while (true) {
+				try {
+					ChatMessage message = chatSocketImpl.readMessage();
+					notifyObservers(message);
+
+				} catch (ChatClientException | IOException e) {
+					throw new ChatClientException("Problème lors de la lecture du message", e);
+
+				}
+			}
+		}).start();
+
 	}
 }

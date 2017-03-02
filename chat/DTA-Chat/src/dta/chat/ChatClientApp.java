@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import dta.chat.controller.ChatLoginStrategy;
 import dta.chat.model.ChatConversationModel;
+import dta.chat.model.socket.ChatSocketImpl;
 import dta.chat.view.console.ChatConsoleView;
 
 public class ChatClientApp {
@@ -12,7 +13,9 @@ public class ChatClientApp {
 
 		try (Scanner read = new Scanner(System.in)) {
 
-			ChatConversationModel model = new ChatConversationModel();
+			ChatSocketImpl chatSocketImpl = new ChatSocketImpl("192.168.99.31", 1800);
+
+			ChatConversationModel model = new ChatConversationModel(chatSocketImpl);
 			final ChatConsoleView view = new ChatConsoleView(read);
 
 			view.setAuthController(new ChatLoginStrategy(view, model));
@@ -20,9 +23,12 @@ public class ChatClientApp {
 			model.addObserver(view);
 
 			view.print();
+			model.readMessage();
+			while (true) {
 
-			model.sendMessage("Bonjour");
-			model.sendMessage("Autre message");
+				String s = read.nextLine();
+				model.sendMessage(s);
+			}
 		}
 
 	}

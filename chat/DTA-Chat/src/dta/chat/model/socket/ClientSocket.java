@@ -10,8 +10,8 @@ public class ClientSocket extends Socket {
 	private ObjectInputStream serverInput;
 	private ObjectOutputStream serverOuput;
 
-	public ClientSocket(String hostname, Integer port) throws IOException {
-		super(hostname, port);
+	public ClientSocket(String host, Integer port) throws IOException {
+		super(host, port);
 		this.serverInput = new ObjectInputStream(this.getInputStream());
 		this.serverOuput = new ObjectOutputStream(this.getOutputStream());
 	}
