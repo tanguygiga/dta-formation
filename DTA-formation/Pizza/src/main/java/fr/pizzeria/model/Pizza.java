@@ -2,6 +2,9 @@ package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class Pizza {
 
 	public int id;
@@ -14,6 +17,14 @@ public class Pizza {
 
 	public Double getPrix() {
 		return prix;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getCode() {
+		return code;
 	}
 
 	public void setPrix(double prix) {
@@ -43,6 +54,7 @@ public class Pizza {
 
 	}
 
+	@Override
 	public String toString() {
 
 		String temp = "";
@@ -65,7 +77,6 @@ public class Pizza {
 		}
 
 		catch (IllegalArgumentException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 
 		}
@@ -81,4 +92,23 @@ public class Pizza {
 		return temp;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (obj == this) {
+			return true;
+		}
+		if (obj.getClass() != getClass()) {
+			return false;
+		}
+		Pizza pizza = (Pizza) obj;
+		return new EqualsBuilder().append(id, pizza.getId()).append(code, pizza.getCode()).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(89, 97).append(id).append(code).toHashCode();
+	}
 }
