@@ -1,3 +1,7 @@
 wsp
 bin
 *.class
+.gitignore
+.project
+.settings
+.classpath
