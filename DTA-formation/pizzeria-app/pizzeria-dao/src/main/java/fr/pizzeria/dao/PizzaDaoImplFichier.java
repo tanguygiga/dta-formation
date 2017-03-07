@@ -35,7 +35,7 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 
 					return p;
 				} catch (IOException e) {
-					throw new RuntimeException();
+					throw new RuntimeException(e);
 				}
 
 			}).collect(Collectors.toList());
@@ -44,7 +44,6 @@ public class PizzaDaoImplFichier implements IDao<Pizza, String> {
 			System.out.println("ERREUR LORS DE LA LECTURE");
 		}
 
-		// TODO Auto-generated method stub
 		return listPizza;
 	}
 

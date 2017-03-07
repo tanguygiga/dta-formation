@@ -23,7 +23,7 @@ public class Pizza {
 		this.prix = prix;
 	}
 
-	public static int nbPizzas;
+	public int nbPizzas;
 	@ToString
 	public CategoriePizza categorie;
 
@@ -46,6 +46,7 @@ public class Pizza {
 
 	}
 
+	@Override
 	public String toString() {
 
 		String temp = "";
@@ -68,7 +69,6 @@ public class Pizza {
 		}
 
 		catch (IllegalArgumentException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 
 		}
@@ -94,10 +94,11 @@ public class Pizza {
 		if (p.getClass() != getClass()) {
 			return false;
 		}
-		Pizza rhs = (Pizza) p;
+		Pizza rhs = p;
 		return new EqualsBuilder().append(code, rhs.code).append(nom, rhs.nom).isEquals();
 	}
 
+	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
