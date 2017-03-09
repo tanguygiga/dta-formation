@@ -1,9 +1,11 @@
 package fr.pizzeria.ihm;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
-import fr.pizzeria.exception.*;
+import fr.pizzeria.exception.SoldeException;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public abstract class Menu {
@@ -34,7 +36,7 @@ public abstract class Menu {
 			ihmTools.getSc().nextLine();
 
 			while (choix > actions.size() + 1) {
-				System.out.println("\n!!! Entrez une valeur autorisée !!!\n");
+				System.out.println("\n!!! Entrez une valeur autorisï¿½e !!!\n");
 				afficher();
 				choix = ihmTools.getSc().nextInt();
 				ihmTools.getSc().nextLine();
@@ -43,7 +45,7 @@ public abstract class Menu {
 				try {
 					actions.get(choix).execute();
 				} catch (StockageException | SoldeException e) {
-					System.out.println(e.getMessage() + "\n");
+					throw new StockageException(e);
 				}
 			}
 		}

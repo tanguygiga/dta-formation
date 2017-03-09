@@ -1,9 +1,10 @@
 package fr.pizzeria.ihm.pizza;
 
-import fr.pizzeria.model.*;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.CategoriePizza;
+import fr.pizzeria.model.Pizza;
 
 public class OptionChangePizza extends OptionMenu {
 
@@ -43,7 +44,7 @@ public class OptionChangePizza extends OptionMenu {
 			try {
 				ihmTools.getDaoPizza().update(pizzaPick, new Pizza(code, nom, prix, category));
 			} catch (StockageException e) {
-				throw new StockageException("\n!!! Code incorrect, cette pizza n'existe pas");
+				throw new StockageException(e + "\n!!! Code incorrect, cette pizza n'existe pas");
 			}
 		}
 	}

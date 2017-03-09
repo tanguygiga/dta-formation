@@ -1,9 +1,9 @@
 package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
-import java.util.logging.Logger;
 
-import org.apache.commons.lang3.builder.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Pizza implements Comparable<Pizza> {
 	@ToString(uppercase = true)
@@ -57,7 +57,7 @@ public class Pizza implements Comparable<Pizza> {
 				}
 				sb.append(fieldValue).append(";");
 			} catch (IllegalArgumentException | IllegalAccessException e) {
-				System.out.println("ToString error");
+				throw new IllegalArgumentException(e);
 			}
 		}
 		return sb;

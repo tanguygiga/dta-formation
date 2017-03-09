@@ -1,6 +1,9 @@
 package fr.pizzeria.ihm.client;
 
-import fr.pizzeria.exception.*;
+import fr.pizzeria.exception.CreditException;
+import fr.pizzeria.exception.DebitException;
+import fr.pizzeria.exception.SoldeException;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
@@ -26,9 +29,9 @@ public class OptionDebitClient extends OptionMenu {
 		try {
 			ihmTools.getDaoClient().debiter(clientId, ajout);
 		} catch (DebitException e) {
-			throw new DebitException("\n!!! Pas assez d'argent sur le compte");
+			throw new DebitException(e + "\n!!! Pas assez d'argent sur le compte");
 		} catch (StockageException e) {
-			throw new CreditException("\n!!! Code incorrect, ce client n'existe pas");
+			throw new CreditException(e + "\n!!! Code incorrect, ce client n'existe pas");
 		}
 
 	}

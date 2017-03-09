@@ -1,6 +1,8 @@
 package fr.pizzeria.ihm.client;
 
-import fr.pizzeria.exception.*;
+import fr.pizzeria.exception.CreditException;
+import fr.pizzeria.exception.SoldeException;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
@@ -26,9 +28,9 @@ public class OptionCreditClient extends OptionMenu {
 		try {
 			ihmTools.getDaoClient().crediter(clientId, ajout);
 		} catch (CreditException e) {
-			throw new CreditException("\n!!! Le montant ne peux pas exceder 5000€");
+			throw new CreditException(e + "\n!!! Le montant ne peux pas exceder 5000ï¿½");
 		} catch (StockageException e) {
-			throw new CreditException("\n!!! Code incorrect, ce client n'existe pas");
+			throw new CreditException(e + "\n!!! Code incorrect, ce client n'existe pas");
 		}
 	}
 
