@@ -1,6 +1,5 @@
 package fr.pizzeria.ihm;
 
-import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.tools.IhmTools;
 
 public abstract class OptionMenu {
@@ -13,5 +12,5 @@ public abstract class OptionMenu {
 
 	public abstract String getLibelle();
 
-	public abstract void execute() throws StockageException;
+	public abstract void execute();
 }

@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -31,14 +33,22 @@ public class PizzaDaoDataBase implements IDao<Pizza> {
 		password = bundle.getString("database.password");
 	}
 
+	private Connection createNewConnexion() throws SQLException {
+		Connection connexion = DriverManager.getConnection(dbURL, user, password);
+		return connexion;
+
+	}
+
 	@Override
 	public List<Pizza> findAll() throws StockageException {
 
+		List<Pizza> pizzas = new ArrayList<>();
+
 		String sql = "SELECT * FROM pizza";
 
-		try (Connection connexion = DriverManager.getConnection(dbURL, user, password);
-				Statement statement = connexion.createStatement();
-				ResultSet result = statement.executeQuery(sql);) {
+		try (Connection connexion = createNewConnexion();
+				Statement st = connexion.createStatement();
+				ResultSet result = st.executeQuery(sql);) {
 
 			while (result.next()) {
 				int id = result.getInt(1);
@@ -47,41 +57,38 @@ public class PizzaDaoDataBase implements IDao<Pizza> {
 				double prix = result.getDouble(4);
 				String url_image = result.getString(5);
 
-				System.out.println(
-						id + ". " + reference + " - " + libelle + " (" + prix + " €)" + " [" + url_image + "]");
-
+				pizzas.add(new Pizza(reference, libelle, prix, null));
 			}
+			Collections.sort(pizzas);
 		} catch (SQLException e) {
 			throw new StockageException(e);
 		}
-		return null;
+		return pizzas;
+	}
+
+	@FunctionalInterface
+	public interface Exec {
+		public void execute(PreparedStatement ps) throws SQLException;
+	}
+
+	public void executeUpdate(String sql, Exec ex) throws StockageException {
+		try (Connection connexion = createNewConnexion(); PreparedStatement st = connexion.prepareStatement(sql);) {
+
+			ex.execute(st);
+
+		} catch (SQLException e) {
+			throw new StockageException(e);
+		}
 	}
 
 	@Override
 	public void save(Pizza t) throws StockageException {
-
-		try (Connection connexion = DriverManager.getConnection(dbURL, user, password)) {
-
-			String sql = "INSERT INTO pizza (libelle, reference, prix, url_image) VALUES (?, ?, ?, ?)";
-
-			PreparedStatement statement = connexion.prepareStatement(sql);
-			String libelle = t.getNom();
-			String reference = t.getCode();
-			double prix = t.getPrix();
-			String url_image = null;
-
-			statement.setString(1, libelle);
-			statement.setString(2, reference);
-			statement.setDouble(3, prix);
-			statement.setString(4, url_image);
-			int rowsInserted = statement.executeUpdate();
-
-			if (rowsInserted > 0) {
-				System.out.println("A new user was inserted successfully!");
-			}
-		} catch (SQLException e) {
-			throw new StockageException(e);
-		}
+		executeUpdate("INSERT INTO pizza (libelle, reference, prix, url_image) VALUES (?, ?, ?, ?)", st -> {
+			st.setString(1, t.getNom());
+			st.setString(2, t.getCode());
+			st.setDouble(3, t.getPrix());
+			st.setString(4, "");
+		});
 
 	}
 
