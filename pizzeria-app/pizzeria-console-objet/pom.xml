@@ -14,6 +14,11 @@
 			<groupId>dta</groupId>
 			<artifactId>tanguy-pizzeria-model</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>1.5.9</version>
+		</dependency>
 	</dependencies>
 
 	<build>
