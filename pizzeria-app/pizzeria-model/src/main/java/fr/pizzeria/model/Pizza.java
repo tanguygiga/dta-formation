@@ -1,108 +1,88 @@
 package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
+import java.util.logging.Logger;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.*;
 
-public class Pizza {
-
-	public int id;
+public class Pizza implements Comparable<Pizza> {
+	@ToString(uppercase = true)
+	private String code;
 	@ToString
-	public String code;
+	private String nom;
 	@ToString
-	public String nom;
-	@ToString
-	public Double prix;
+	private double prix;
+	private CategoriePizza categorie;
 
-	public Double getPrix() {
+	public Pizza(String code, String nom, double prix, CategoriePizza category) {
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.categorie = category;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public double getPrix() {
 		return prix;
 	}
-
-	public void setPrix(double prix) {
-		this.prix = prix;
-	}
-
-	public static int nbPizzas;
-	@ToString
-	public CategoriePizza categorie;
 
 	public CategoriePizza getCategorie() {
 		return categorie;
 	}
 
-	public void setCategorie(CategoriePizza categorie) {
-		this.categorie = categorie;
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("");
+		for (Field field : this.getClass().getDeclaredFields()) {
+			appendIfAnnoted(field, sb);
+		}
+		return sb.toString();
 	}
 
-	public Pizza(int id, String code, String nom, double prix, CategoriePizza categorie) {
-		this.id = id;
-		this.code = code;
-		this.nom = nom;
-		this.prix = prix;
-		this.categorie = categorie;
+	private StringBuilder appendIfAnnoted(Field field, StringBuilder sb) {
+		if (field.isAnnotationPresent(ToString.class)) {
+			String fieldValue;
+			try {
+				fieldValue = field.get(this).toString();
 
-		nbPizzas++;
-
+				if (field.getAnnotation(ToString.class).uppercase()) {
+					fieldValue = fieldValue.toUpperCase();
+				}
+				sb.append(fieldValue).append(";");
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				System.out.println("ToString error");
+			}
+		}
+		return sb;
 	}
 
 	@Override
-	public String toString() {
-
-		String temp = "";
-		try {
-			for (Field champ : this.getClass().getDeclaredFields()) {
-
-				ToString annotationTrouve = champ.getAnnotation((ToString.class));
-
-				if (annotationTrouve != null) {
-
-					if (champ.getAnnotation((ToString.class)).uppercase() == false) {
-
-						temp += champ.get(this).toString() + " ";
-					} else {
-						temp += champ.get(this).toString().toUpperCase() + " ";
-					}
-				}
-
-			}
-		}
-
-		catch (IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
-
-		}
-		return temp;
-	}
-
-	public String toCSV() {
-
-		String temp = "";
-
-		temp += id + ";" + code + ";" + nom + ";" + prix + ";" + categorie.getLibelle();
-
-		return temp;
-	}
-
-	public boolean equals(Pizza p) {
-		if (p == null) {
-			return false;
-		}
-		if (p == this) {
-			return true;
-		}
-		if (p.getClass() != getClass()) {
-			return false;
-		}
-		Pizza rhs = p;
-		return new EqualsBuilder().append(code, rhs.code).append(nom, rhs.nom).isEquals();
+	public int compareTo(Pizza pizza) {
+		return this.code.compareTo(pizza.getCode());
 	}
 
 	@Override
 	public int hashCode() {
-		// you pick a hard-coded, randomly chosen, non-zero, odd number
-		// ideally different for each class
-		return new HashCodeBuilder(17, 37).append(code).append(nom).toHashCode();
+		return new HashCodeBuilder(23, 31).append(code).toHashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pizza other = (Pizza) obj;
+		return new EqualsBuilder().append(code, other.code).isEquals();
 	}
 
 }
