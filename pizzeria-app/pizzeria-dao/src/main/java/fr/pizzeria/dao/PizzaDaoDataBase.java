@@ -41,9 +41,8 @@ public class PizzaDaoDataBase implements IDao<Pizza> {
 			String sql = "SELECT * FROM pizza";
 
 			Statement statement = conn.createStatement();
-			ResultSet result = statement.executeQuery(sql);
 
-			// int count = 0;
+			ResultSet result = statement.executeQuery(sql);
 
 			while (result.next()) {
 				int id = result.getInt(1);
@@ -54,12 +53,12 @@ public class PizzaDaoDataBase implements IDao<Pizza> {
 
 				System.out.println(
 						id + ". " + reference + " - " + libelle + " (" + prix + " €)" + " [" + url_image + "]");
-				/*
-				 * String output = "#%d: %s - %s - %s - %s - %s";
-				 * System.out.println(String.format(output, ++count, id,
-				 * libelle, reference, prix, url_image));
-				 */
+
 			}
+
+			result.close();
+			statement.close();
+
 		} catch (SQLException e) {
 			throw new StockageException(e);
 		}
