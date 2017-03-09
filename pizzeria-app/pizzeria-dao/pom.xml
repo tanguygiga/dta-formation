@@ -2,8 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>cyrille-pizzeria-dao</artifactId>
-  <version>1.0</version>
+  <artifactId>tanguy-pizzeria-dao</artifactId>
   <packaging>jar</packaging>
 
   <properties>
@@ -17,17 +16,22 @@
     </dependency>
     <dependency>
     	<groupId>dta</groupId>
-    	<artifactId>cyrille-pizzeria-model</artifactId>
+    	<artifactId>tanguy-pizzeria-model</artifactId>
     </dependency>
     <dependency>
     	<groupId>org.hamcrest</groupId>
     	<artifactId>hamcrest-library</artifactId>
     </dependency>
+    <dependency>
+    <groupId>org.mariadb.jdbc</groupId>
+    <artifactId>mariadb-java-client</artifactId>
+    <version>1.5.9</version>
+</dependency>
   </dependencies>
   
 	<parent>
 		<groupId>dta</groupId>
-		<artifactId>cyrille-pizzeria</artifactId>
+		<artifactId>tanguy-pizzeria</artifactId>
 		<version>1.0</version>
 		<relativePath>../</relativePath>		
 	</parent>

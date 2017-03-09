@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>dta</groupId>
-    <artifactId>cyrille-pizzeria</artifactId>
+    <artifactId>tanguy-pizzeria</artifactId>
 	<version>1.0</version>
 
     <packaging>pom</packaging>
@@ -94,12 +94,12 @@
             </dependency>
             <dependency>
                 <groupId>dta</groupId>
-                <artifactId>cyrille-pizzeria-dao</artifactId>
+                <artifactId>tanguy-pizzeria-dao</artifactId>
                 <version>1.0</version>
             </dependency>
             <dependency>
                 <groupId>dta</groupId>
-                <artifactId>cyrille-pizzeria-model</artifactId>
+                <artifactId>tanguy-pizzeria-model</artifactId>
                 <version>1.0</version>
             </dependency>
             <dependency>

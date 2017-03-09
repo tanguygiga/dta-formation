@@ -1,46 +1,45 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<version>1.0</version>
 	<properties>
-    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	<artifactId>cyrille-pizzeria-console-objet</artifactId>
+	<artifactId>tanguy-pizzeria-console-objet</artifactId>
 	<dependencies>
 		<dependency>
 			<groupId>dta</groupId>
-			<artifactId>cyrille-pizzeria-dao</artifactId>
+			<artifactId>tanguy-pizzeria-dao</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>dta</groupId>
-			<artifactId>cyrille-pizzeria-model</artifactId>
+			<artifactId>tanguy-pizzeria-model</artifactId>
 		</dependency>
 	</dependencies>
-	
-	<build>    
+
+	<build>
 		<resources>
-      		<resource>
-       			<directory>src/main/resources</directory>
-       			<filtering>true</filtering>
-      		</resource>
-    	</resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
-	   			<artifactId>maven-shade-plugin</artifactId>
-	   			<configuration>
-	    		</configuration>
-	     		<executions>
-	       			<execution>
-	         			<phase>package</phase>
-	         			<goals>
-	           				<goal>shade</goal>
-	         			</goals>
-	       			</execution>
-	     		</executions>
-   			</plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<configuration>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-	
+
 	<profiles>
 		<profile>
 			<id>dev</id>
@@ -50,19 +49,26 @@
 		</profile>
 		<profile>
 			<id>prod</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
+
 			<properties>
 				<dao.impl>PizzaDaoFichiers</dao.impl>
 			</properties>
 		</profile>
+		<profile>
+			<id>db</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<dao.impl>PizzaDaoDataBase</dao.impl>
+			</properties>
+		</profile>
 	</profiles>
-	
+
 	<parent>
 		<groupId>dta</groupId>
-		<artifactId>cyrille-pizzeria</artifactId>
+		<artifactId>tanguy-pizzeria</artifactId>
 		<version>1.0</version>
-		<relativePath>../</relativePath>		
+		<relativePath>../</relativePath>
 	</parent>
 </project>
