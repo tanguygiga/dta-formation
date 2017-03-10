@@ -1,13 +1,20 @@
 package fr.pizzeria.dao;
 
 import java.io.IOException;
-import java.nio.file.*;
-import java.util.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 
-import fr.pizzeria.exception.*;
-import fr.pizzeria.model.*;
+import fr.pizzeria.exception.DeleteException;
+import fr.pizzeria.exception.SaveException;
+import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.model.CategoriePizza;
+import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoFichiers implements IDao<Pizza> {
+public class PizzaDaoFichiers implements IDao<Pizza, String> {
 
 	@Override
 	public List<Pizza> findAll() {

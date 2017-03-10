@@ -66,6 +66,7 @@
 			</activation>
 			<properties>
 				<dao.impl>PizzaDaoDataBase</dao.impl>
+				<dao.source>PizzaDaoFichiers</dao.source>
 			</properties>
 		</profile>
 	</profiles>

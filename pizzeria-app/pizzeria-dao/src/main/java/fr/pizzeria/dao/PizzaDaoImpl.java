@@ -1,12 +1,16 @@
 package fr.pizzeria.dao;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-import fr.pizzeria.exception.*;
+import fr.pizzeria.exception.DeleteException;
+import fr.pizzeria.exception.SaveException;
+import fr.pizzeria.exception.UpdateException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoImpl implements IDao<Pizza> {
+public class PizzaDaoImpl implements IDao<Pizza, String> {
 
 	private List<Pizza> pizzas = new ArrayList<>();
 

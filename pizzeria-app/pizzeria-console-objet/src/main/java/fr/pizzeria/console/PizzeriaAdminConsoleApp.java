@@ -3,7 +3,8 @@ package fr.pizzeria.console;
 import java.util.ResourceBundle;
 
 import fr.pizzeria.dao.IDao;
-import fr.pizzeria.ihm.*;
+import fr.pizzeria.ihm.Menu;
+import fr.pizzeria.ihm.MenuPizza;
 import fr.pizzeria.ihm.tools.IhmTools;
 import fr.pizzeria.model.Pizza;
 
@@ -24,7 +25,7 @@ public class PizzeriaAdminConsoleApp {
 
 		IhmTools ihmTools = new IhmTools(daoImplInstance);
 
-		Menu menu = new MenuPrincipal("**** Pizzeria Administration ****", ihmTools);
+		Menu menu = new MenuPizza("**** Pizzeria Administration ****", ihmTools);
 		menu.executer();
 
 		System.out.println("\nAu revoir, a bientot !");

@@ -11,10 +11,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 
-public class PizzaDaoDataBase implements IDao<Pizza> {
+public class PizzaDaoDataBase implements IDao<Pizza, String> {
 
 	private String driver;
 	private String dbURL;
@@ -51,11 +52,11 @@ public class PizzaDaoDataBase implements IDao<Pizza> {
 				ResultSet result = st.executeQuery(sql);) {
 
 			while (result.next()) {
-				int id = result.getInt(1);
+				// int id = result.getInt(1);
 				String libelle = result.getString(2);
 				String reference = result.getString(3);
 				double prix = result.getDouble(4);
-				String url_image = result.getString(5);
+				// String url_image = result.getString(5);
 
 				pizzas.add(new Pizza(reference, libelle, prix, null));
 			}
@@ -100,6 +101,11 @@ public class PizzaDaoDataBase implements IDao<Pizza> {
 	@Override
 	public void delete(String codePizza) throws StockageException {
 
+	}
+
+	@Override
+	public void importData(IDao<Pizza, String> source) throws DaoException {
+		List<List<Pizza>> listOfList = ListUtils.partition(source.findAll(), 3);
 	}
 
 }

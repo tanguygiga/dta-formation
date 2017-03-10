@@ -36,7 +36,7 @@ public abstract class Menu {
 			ihmTools.getSc().nextLine();
 
 			while (choix > actions.size() + 1) {
-				System.out.println("\n!!! Entrez une valeur autoris�e !!!\n");
+				System.out.println("\n!!! Entrez une valeur autorisée !!!\n");
 				afficher();
 				choix = ihmTools.getSc().nextInt();
 				ihmTools.getSc().nextLine();
