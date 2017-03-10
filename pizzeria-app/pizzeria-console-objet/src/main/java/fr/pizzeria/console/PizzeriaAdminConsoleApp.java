@@ -21,7 +21,7 @@ public class PizzeriaAdminConsoleApp {
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
 
 		String daoImpl = resourceBundle.getString("dao.impl");
-		IDao<Pizza> daoImplInstance = (IDao<Pizza>) Class.forName(daoImpl).newInstance();
+		IDao<Pizza, String> daoImplInstance = (IDao<Pizza, String>) Class.forName(daoImpl).newInstance();
 
 		IhmTools ihmTools = new IhmTools(daoImplInstance);
 
