@@ -15,15 +15,16 @@ public class PizzaDaoJpa implements IDao<Pizza, String> {
 	EntityManagerFactory emf;
 
 	public PizzaDaoJpa() {
-		emf = Persistence.createEntityManagerFactory("Pizza");
+		emf = Persistence.createEntityManagerFactory("tanguy-pizzeria");
 	}
 
 	@Override
 	public List<Pizza> findAll() throws StockageException {
 		EntityManager em = emf.createEntityManager();
 
-		TypedQuery<Pizza> query = em.createQuery("select p from pizza p where p.nom='nom2'", Pizza.class);
+		TypedQuery<Pizza> query = em.createQuery("select p from Pizza p", Pizza.class);
 		List<Pizza> pizzas = query.getResultList();
+		em.close();
 
 		return pizzas;
 	}

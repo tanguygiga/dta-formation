@@ -2,6 +2,7 @@ package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -17,9 +18,11 @@ public class Pizza implements Comparable<Pizza> {
 	@GeneratedValue
 	private int id;
 
+	@Column(name = "reference")
 	@ToString(uppercase = true)
 	private String code;
 
+	@Column(name = "libelle")
 	@ToString
 	private String nom;
 
@@ -28,6 +31,9 @@ public class Pizza implements Comparable<Pizza> {
 
 	@Enumerated
 	private CategoriePizza categorie;
+
+	public Pizza() {
+	}
 
 	public Pizza(String code, String nom, double prix, CategoriePizza category) {
 		this.code = code;

@@ -19,7 +19,11 @@
 			<artifactId>mariadb-java-client</artifactId>
 			<version>1.5.9</version>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
