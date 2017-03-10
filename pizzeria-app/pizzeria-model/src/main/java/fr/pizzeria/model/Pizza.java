@@ -2,16 +2,31 @@ package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
 
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+@Entity
 public class Pizza implements Comparable<Pizza> {
+
+	@Id
+	@GeneratedValue
+	private int id;
+
 	@ToString(uppercase = true)
 	private String code;
+
 	@ToString
 	private String nom;
+
 	@ToString
 	private double prix;
+
+	@Enumerated
 	private CategoriePizza categorie;
 
 	public Pizza(String code, String nom, double prix, CategoriePizza category) {
@@ -19,6 +34,10 @@ public class Pizza implements Comparable<Pizza> {
 		this.nom = nom;
 		this.prix = prix;
 		this.categorie = category;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getCode() {
