@@ -4,8 +4,10 @@ import java.lang.reflect.Field;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -15,8 +17,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class Pizza implements Comparable<Pizza> {
 
 	@Id
-	@GeneratedValue
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	@Column(name = "reference")
 	@ToString(uppercase = true)
@@ -27,19 +29,20 @@ public class Pizza implements Comparable<Pizza> {
 	private String nom;
 
 	@ToString
-	private double prix;
+	private Double prix;
 
-	@Enumerated
+	@ToString
+	@Enumerated(EnumType.STRING)
 	private CategoriePizza categorie;
 
-	public Pizza() {
-	}
-
-	public Pizza(String code, String nom, double prix, CategoriePizza category) {
+	public Pizza(String code, String nom, Double prix, CategoriePizza category) {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
 		this.categorie = category;
+	}
+
+	public Pizza() {
 	}
 
 	public int getId() {
@@ -75,12 +78,16 @@ public class Pizza implements Comparable<Pizza> {
 		if (field.isAnnotationPresent(ToString.class)) {
 			String fieldValue;
 			try {
-				fieldValue = field.get(this).toString();
+				Object value = field.get(this);
+				if (value != null) {
+					fieldValue = value.toString();
 
-				if (field.getAnnotation(ToString.class).uppercase()) {
-					fieldValue = fieldValue.toUpperCase();
+					if (field.getAnnotation(ToString.class).uppercase()) {
+						fieldValue = fieldValue.toUpperCase();
+					}
+					sb.append(fieldValue).append(" | ");
 				}
-				sb.append(fieldValue).append(";");
+
 			} catch (IllegalArgumentException | IllegalAccessException e) {
 				throw new IllegalArgumentException(e);
 			}
