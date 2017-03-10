@@ -105,7 +105,8 @@ public class PizzaDaoDataBase implements IDao<Pizza, String> {
 
 	@Override
 	public void importData(IDao<Pizza, String> source) throws DaoException {
-		List<List<Pizza>> listOfList = ListUtils.partition(source.findAll(), 3);
+		// List<List<Pizza>> listOfList = ListUtils.partition(source.findAll(),
+		// 3);
 	}
 
 }
