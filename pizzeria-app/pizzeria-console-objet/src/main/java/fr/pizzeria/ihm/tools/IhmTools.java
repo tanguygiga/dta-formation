@@ -2,7 +2,6 @@ package fr.pizzeria.ihm.tools;
 
 import java.util.Scanner;
 
-import fr.pizzeria.dao.ClientDaoImpl;
 import fr.pizzeria.dao.IClientDao;
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.model.Pizza;
@@ -14,7 +13,6 @@ public class IhmTools {
 
 	public IhmTools(IDao<Pizza, String> dao) {
 		this.daoPizza = dao;
-		this.daoClient = new ClientDaoImpl();
 	}
 
 	public IDao<Pizza, String> getDaoPizza() {

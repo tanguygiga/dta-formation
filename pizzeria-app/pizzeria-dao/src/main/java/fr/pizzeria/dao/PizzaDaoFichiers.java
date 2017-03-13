@@ -17,7 +17,7 @@ import fr.pizzeria.model.Pizza;
 public class PizzaDaoFichiers implements IDao<Pizza, String> {
 
 	@Override
-	public List<Pizza> findAll() {
+	public List<Pizza> read() {
 		List<Pizza> pizzas = new ArrayList<>();
 		try {
 			Files.list(Paths.get("data")).forEach(path -> extractPizzasFromFile(path));
@@ -39,7 +39,7 @@ public class PizzaDaoFichiers implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void save(Pizza newPizza) {
+	public void create(Pizza newPizza) {
 		try {
 			Files.write(Paths.get(newPizza.getCode(), ".txt"), newPizza.toString().getBytes(),
 					StandardOpenOption.CREATE_NEW);
@@ -52,7 +52,7 @@ public class PizzaDaoFichiers implements IDao<Pizza, String> {
 	@Override
 	public void update(String codePizza, Pizza newPizza) {
 		delete(codePizza);
-		save(newPizza);
+		create(newPizza);
 	}
 
 	@Override

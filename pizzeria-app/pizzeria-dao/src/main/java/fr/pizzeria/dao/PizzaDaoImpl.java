@@ -27,12 +27,12 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public List<Pizza> findAll() {
+	public List<Pizza> read() {
 		return pizzas;
 	}
 
 	@Override
-	public void save(Pizza pizza) {
+	public void create(Pizza pizza) {
 		try {
 			pizzas.add(pizza);
 			Collections.sort(pizzas);

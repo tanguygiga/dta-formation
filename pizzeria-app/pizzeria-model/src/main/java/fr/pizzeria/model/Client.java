@@ -1,61 +1,79 @@
 package fr.pizzeria.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import fr.pizzeria.exception.CreditException;
-import fr.pizzeria.exception.DebitException;
-
+@Entity
 public class Client implements Comparable<Client> {
-	private int id;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nom;
 	private String prenom;
-	private double solde;
+	private String email;
+	private String password;
 
-	public Client(int id, String prenom, String nom) {
+	public Client() {
+		super();
+	}
+
+	public Client(Integer id, String prenom, String nom, String email, String password) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.solde = 0.0;
+		this.email = email;
+		this.password = password;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNom() {
 		return nom;
 	}
 
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	public String getPrenom() {
 		return prenom;
 	}
 
-	public double getSolde() {
-		return solde;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
-	public void crediterCompte(double montant) throws CreditException {
-		double tempSolde = solde + montant;
-		if (tempSolde > 5000.0) {
-			throw new CreditException();
-		} else {
-			solde = tempSolde;
-		}
+	public String getEmail() {
+		return email;
 	}
 
-	public void debiterCompte(double montant) throws DebitException {
-		double tempSolde = solde - montant;
-		if (tempSolde < 0.0) {
-			throw new DebitException();
-		} else {
-			solde = tempSolde;
-		}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return id + " -> " + prenom + " " + nom + " (" + solde + " �)";
+		return id + " -> " + prenom + " " + nom + " (" + email + ")";
 	}
 
 	@Override

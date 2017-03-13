@@ -23,7 +23,7 @@ public class PizzaDaoImplTest {
 
 	@Test
 	public void testFindAll() {
-		List<Pizza> pizzas = dao.findAll();
+		List<Pizza> pizzas = dao.read();
 		assertThat(pizzas.size(), anyOf(is(8), is(9)));
 	}
 

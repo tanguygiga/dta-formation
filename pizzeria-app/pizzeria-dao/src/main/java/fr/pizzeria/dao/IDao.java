@@ -6,9 +6,10 @@ import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.StockageException;
 
 public interface IDao<T, E> {
-	List<T> findAll() throws StockageException;
 
-	void save(T t) throws StockageException;
+	void create(T t) throws StockageException;
+
+	List<T> read() throws StockageException;
 
 	void update(String codePizza, T t) throws StockageException;
 

@@ -1,7 +1,6 @@
 package fr.pizzeria.console;
 
-import java.util.ResourceBundle;
-import java.util.logging.Level;
+//import java.util.ResourceBundle;
 
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.dao.PizzaDaoJpa;
@@ -16,14 +15,14 @@ public class PizzeriaAdminConsoleApp {
 		throw new IllegalAccessError("Utility class");
 	}
 
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
+		// java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 
-		ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
+		// ResourceBundle resourceBundle =
+		// ResourceBundle.getBundle("application");
 
-		String daoImpl = resourceBundle.getString("dao.impl");
+		// String daoImpl = resourceBundle.getString("dao.impl");
 
 		// IDao<Pizza, String> daoImplInstance = (IDao<Pizza, String>)
 		// Class.forName(daoImpl).newInstance();

@@ -41,7 +41,7 @@ public class PizzaDaoDataBase implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public List<Pizza> findAll() throws StockageException {
+	public List<Pizza> read() throws StockageException {
 
 		List<Pizza> pizzas = new ArrayList<>();
 
@@ -83,7 +83,7 @@ public class PizzaDaoDataBase implements IDao<Pizza, String> {
 	}
 
 	@Override
-	public void save(Pizza t) throws StockageException {
+	public void create(Pizza t) throws StockageException {
 		executeUpdate("INSERT INTO pizza (libelle, reference, prix, url_image) VALUES (?, ?, ?, ?)", st -> {
 			st.setString(1, t.getNom());
 			st.setString(2, t.getCode());

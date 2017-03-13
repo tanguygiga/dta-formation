@@ -49,6 +49,10 @@ public class Pizza implements Comparable<Pizza> {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getCode() {
 		return code;
 	}

@@ -39,7 +39,7 @@ public class OptionAddPizza extends OptionMenu {
 		ihmTools.getSc().nextLine();
 		CategoriePizza category = categories[choixCategory - 1];
 		try {
-			ihmTools.getDaoPizza().save(new Pizza(code, nom, prix, category));
+			ihmTools.getDaoPizza().create(new Pizza(code, nom, prix, category));
 		} catch (StockageException e) {
 			throw new StockageException("\n!!! Une erreur a été enregistrée : " + e);
 		}

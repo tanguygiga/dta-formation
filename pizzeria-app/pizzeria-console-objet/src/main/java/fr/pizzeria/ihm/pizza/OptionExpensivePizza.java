@@ -19,7 +19,7 @@ public class OptionExpensivePizza extends OptionMenu {
 
 	@Override
 	public void execute() {
-		ihmTools.getDaoPizza().findAll().stream().max(Comparator.comparingDouble(Pizza::getPrix))
+		ihmTools.getDaoPizza().read().stream().max(Comparator.comparingDouble(Pizza::getPrix))
 				.ifPresent(System.out::println);
 	}
 

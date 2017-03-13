@@ -16,7 +16,7 @@ public class OptionListePizzas extends OptionMenu {
 
 	@Override
 	public void execute() {
-		ihmTools.getDaoPizza().findAll().stream().forEach(System.out::println);
+		ihmTools.getDaoPizza().read().stream().forEach(System.out::println);
 	}
 
 }

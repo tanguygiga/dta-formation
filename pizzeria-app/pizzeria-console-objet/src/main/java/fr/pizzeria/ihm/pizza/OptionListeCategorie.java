@@ -19,7 +19,7 @@ public class OptionListeCategorie extends OptionMenu {
 
 	@Override
 	public void execute() {
-		ihmTools.getDaoPizza().findAll().stream().collect(Collectors.groupingBy(Pizza::getCategorie))
+		ihmTools.getDaoPizza().read().stream().collect(Collectors.groupingBy(Pizza::getCategorie))
 				.forEach((k, v) -> {
 					System.out.println(k);
 					v.stream().forEach(System.out::println);

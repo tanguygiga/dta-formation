@@ -1,7 +1,5 @@
 package fr.pizzeria.ihm.client;
 
-import fr.pizzeria.model.Client;
-import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
 
@@ -17,7 +15,7 @@ public class OptionAddClient extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws StockageException {
+	public void execute() {
 		int size = ihmTools.getDaoClient().findAll().size();
 
 		System.out.println("Veuillez saisir le prenom");
@@ -26,7 +24,8 @@ public class OptionAddClient extends OptionMenu {
 		System.out.println("Veuillez saisir le nom");
 		String nom = ihmTools.getSc().nextLine();
 
-		ihmTools.getDaoClient().newClient(new Client(size + 1, prenom, nom));
+		// ihmTools.getDaoClient().newClient(new Client(size + 1, prenom, nom,
+		// nom, nom));
 	}
 
 }
