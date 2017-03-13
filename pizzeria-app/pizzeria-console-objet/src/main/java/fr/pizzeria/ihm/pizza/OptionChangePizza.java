@@ -17,9 +17,9 @@ public class OptionChangePizza extends OptionMenu {
 
 	@Override
 	public void execute() {
-		System.out.println("Veuillez choisir le code de la pizza a modifier (99 pour abandonner)");
+		System.out.println("Veuillez choisir le code de la pizza a modifier (EXIT pour abandonner)");
 		String pizzaPick = ihmTools.getSc().nextLine().toUpperCase();
-		if (pizzaPick != "99") {
+		if (pizzaPick != "EXIT") {
 
 			try {
 				ihmTools.getDaoPizza().update(pizzaPick, ihmTools.saisir());

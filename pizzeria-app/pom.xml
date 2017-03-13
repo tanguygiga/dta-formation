@@ -16,6 +16,7 @@
 		<module>pizzeria-console-objet</module>
 		<module>pizzeria-dao</module>
 		<module>pizzeria-model</module>
+		<module>pizzeria-client</module>
 	</modules>
 
 	<build>

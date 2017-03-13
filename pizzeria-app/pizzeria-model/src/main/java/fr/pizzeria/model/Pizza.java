@@ -1,7 +1,5 @@
 package fr.pizzeria.model;
 
-import java.lang.reflect.Field;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -72,32 +70,26 @@ public class Pizza implements Comparable<Pizza> {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("");
-		for (Field field : this.getClass().getDeclaredFields()) {
-			appendIfAnnoted(field, sb);
+		StringBuilder builder = new StringBuilder();
+
+		if (code != null) {
+			builder.append(code);
+			builder.append(" - ");
 		}
-		return sb.toString();
-	}
-
-	private StringBuilder appendIfAnnoted(Field field, StringBuilder sb) {
-		if (field.isAnnotationPresent(ToString.class)) {
-			String fieldValue;
-			try {
-				Object value = field.get(this);
-				if (value != null) {
-					fieldValue = value.toString();
-
-					if (field.getAnnotation(ToString.class).uppercase()) {
-						fieldValue = fieldValue.toUpperCase();
-					}
-					sb.append(fieldValue).append(" | ");
-				}
-
-			} catch (IllegalArgumentException | IllegalAccessException e) {
-				throw new IllegalArgumentException(e);
-			}
+		if (nom != null) {
+			builder.append(nom);
+			builder.append(" ");
 		}
-		return sb;
+		if (prix != null) {
+			builder.append("(");
+			builder.append(prix);
+			builder.append(" €)");
+		}
+		if (categorie != null) {
+			builder.append(" ~");
+			builder.append(categorie);
+		}
+		return builder.toString();
 	}
 
 	@Override
