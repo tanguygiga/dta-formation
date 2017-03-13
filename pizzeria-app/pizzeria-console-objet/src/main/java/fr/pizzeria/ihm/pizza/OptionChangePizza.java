@@ -3,8 +3,6 @@ package fr.pizzeria.ihm.pizza;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.IhmTools;
-import fr.pizzeria.model.CategoriePizza;
-import fr.pizzeria.model.Pizza;
 
 public class OptionChangePizza extends OptionMenu {
 
@@ -18,31 +16,13 @@ public class OptionChangePizza extends OptionMenu {
 	}
 
 	@Override
-	public void execute() throws StockageException {
+	public void execute() {
 		System.out.println("Veuillez choisir le code de la pizza a modifier (99 pour abandonner)");
-		String pizzaPick = ihmTools.getSc().nextLine();
+		String pizzaPick = ihmTools.getSc().nextLine().toUpperCase();
 		if (pizzaPick != "99") {
-			System.out.println("Veuillez saisir le code");
-			String code = ihmTools.getSc().nextLine().toUpperCase();
-
-			System.out.println("Veuillez saisir le nom (sans espaces)");
-			String nom = ihmTools.getSc().nextLine();
-
-			System.out.println("Veuillez saisir le prix");
-			Double prix = ihmTools.getSc().nextDouble();
-
-			System.out.println("Veuillez saisir la cat�gorie :");
-			CategoriePizza[] categories = CategoriePizza.values();
-			for (int i = 0; i < categories.length; i++) {
-				System.out.println(i + 1 + " : " + categories[i].getLibelle());
-			}
-
-			int choixCategory = ihmTools.getSc().nextInt();
-			ihmTools.getSc().nextLine();
-			CategoriePizza category = categories[choixCategory - 1];
 
 			try {
-				ihmTools.getDaoPizza().update(pizzaPick, new Pizza(code, nom, prix, category));
+				ihmTools.getDaoPizza().update(pizzaPick, ihmTools.saisir());
 			} catch (StockageException e) {
 				throw new StockageException(e + "\n!!! Code incorrect, cette pizza n'existe pas");
 			}

@@ -16,6 +16,12 @@ public class Livreur {
 
 	private String prenom;
 
+	public Livreur(Integer id, String nom, String prenom) {
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -37,12 +43,6 @@ public class Livreur {
 	}
 
 	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public Livreur(Integer id, String nom, String prenom) {
-		this.id = id;
-		this.nom = nom;
 		this.prenom = prenom;
 	}
 

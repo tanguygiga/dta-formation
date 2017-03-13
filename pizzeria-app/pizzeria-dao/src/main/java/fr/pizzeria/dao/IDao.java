@@ -11,9 +11,9 @@ public interface IDao<T, E> {
 
 	List<T> read() throws StockageException;
 
-	void update(String codePizza, T t) throws StockageException;
+	void update(String code, T t) throws StockageException;
 
-	void delete(String codePizza) throws StockageException;
+	void delete(String code) throws StockageException;
 
 	default void importData(IDao<T, String> source) throws DaoException {
 		throw new DaoException("Pas encore implémentée");

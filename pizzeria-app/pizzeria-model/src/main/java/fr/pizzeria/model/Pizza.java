@@ -2,29 +2,30 @@ package fr.pizzeria.model;
 
 import java.lang.reflect.Field;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = "pizza.findAllPizzas", query = "select p from Pizza p"),
+		@NamedQuery(name = "pizza.getById", query = "select p from Pizza p where p.code = :code") })
 public class Pizza implements Comparable<Pizza> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "reference")
 	@ToString(uppercase = true)
 	private String code;
 
-	@Column(name = "libelle")
 	@ToString
 	private String nom;
 
