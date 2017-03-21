@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.dao.PizzaDaoImpl;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -58,16 +59,33 @@ public class PizzaServletWebApi extends HttpServlet {
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
 	@Override
-	protected void doPut(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPut(HttpServletRequest rq, HttpServletResponse rp) throws ServletException, IOException {
+		String code = rq.getParameter("code");
+		String nom = rq.getParameter("nom");
+		String prix = rq.getParameter("prix");
+		String cat = rq.getParameter("categorie");
+
+		try {
+			dao.update(code, new Pizza(code, nom, Double.valueOf(prix), CategoriePizza.valueOf(cat)));
+		} catch (StockageException e) {
+			throw new StockageException(e + "\n!!! Code incorrect, cette pizza n'existe pas");
+		}
+		rp.setStatus(200);
+
 	}
 
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	@Override
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-	}
+	protected void doDelete(HttpServletRequest rq, HttpServletResponse rp) throws ServletException, IOException {
 
+		try {
+			dao.delete(rq.getParameter("code"));
+		} catch (StockageException e) {
+			throw new StockageException(e + "\n!!! Code incorrect, cette pizza n'existe pas");
+		}
+		rp.setStatus(200);
+
+	}
 }
