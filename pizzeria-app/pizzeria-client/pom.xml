@@ -6,4 +6,31 @@
     <version>1.0</version>
   </parent>
   <artifactId>pizzeria-client</artifactId>
+    <packaging>war</packaging>
+  <name>pizzeria-admin-app Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>servlet-api</artifactId>
+    	<version>3.0-alpha-1</version>
+    	<scope>provided</scope>
+	</dependency>
+	<dependency>
+			<groupId>dta</groupId>
+			<artifactId>tanguy-pizzeria-dao</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>dta</groupId>
+			<artifactId>tanguy-pizzeria-model</artifactId>
+		</dependency>
+  </dependencies>
+  <build>
+    <finalName>pizzeria-admin-app</finalName>
+  </build>
 </project>

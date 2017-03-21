@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.dao.PizzaDaoImpl;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 /**
@@ -33,10 +34,7 @@ public class PizzaServletWebApi extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest rq, HttpServletResponse rp) throws ServletException, IOException {
 		List<Pizza> pizzas = dao.read();
-		for (Pizza pizza : pizzas) {
-			rp.getWriter().append(pizzas.toString());
-
-		}
+		rp.getWriter().append(pizzas.toString());
 
 	}
 
@@ -45,9 +43,15 @@ public class PizzaServletWebApi extends HttpServlet {
 	 *      response)
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest rq, HttpServletResponse rp) throws ServletException, IOException {
+		String code = rq.getParameter("code");
+		String nom = rq.getParameter("nom");
+		String prix = rq.getParameter("prix");
+		String cat = rq.getParameter("categorie");
+
+		dao.create(new Pizza(code, nom, Double.valueOf(prix), CategoriePizza.valueOf(cat)));
+		rp.setStatus(201);
+
 	}
 
 	/**

@@ -88,7 +88,6 @@ public class Pizza implements Comparable<Pizza> {
 		if (categorie != null) {
 			builder.append(" ~");
 			builder.append(categorie);
-			builder.append("\n");
 		}
 		return builder.toString();
 	}
