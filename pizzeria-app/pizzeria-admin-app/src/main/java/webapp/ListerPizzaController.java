@@ -1,14 +1,15 @@
 package webapp;
 
 import java.io.IOException;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.dao.PizzaDaoImpl;
+import fr.pizzeria.model.Pizza;
 
 /**
  * Servlet implementation class ListerPizzaController
@@ -31,7 +32,10 @@ public class ListerPizzaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("listPizzas", new PizzaDaoImpl().read());
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/pizzas/listerPizzas.jsf");
+		List<Pizza> pizzas = new PizzaDaoImpl().read();
+		request.setAttribute("pizzas", pizzas);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/listerPizzas.jsp").forward(request,
+				response);
 	}
 
 	/**
