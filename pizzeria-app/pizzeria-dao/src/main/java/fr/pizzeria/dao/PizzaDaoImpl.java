@@ -17,12 +17,12 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 
 	public PizzaDaoImpl() {
 		pizzas.add(new Pizza("PEP", "Peperoni", 12.50, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza("MAR", "Margherita", 14.00, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("MAR", "Margherita", 14.00, CategoriePizza.VEGETARIEN));
 		pizzas.add(new Pizza("REI", "La Reine", 11.50, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza("FRO", "La 4 fromage", 12.00, CategoriePizza.VEGETARIEN));
 		pizzas.add(new Pizza("CAN", "La cannibale", 12.50, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza("SAV", "La savoyarde", 13.00, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza("ORI", "L'orientale", 13.50, CategoriePizza.VEGETARIEN));
+		pizzas.add(new Pizza("ORI", "L'orientale", 13.50, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza("SAU", "La saumonette", 14.00, CategoriePizza.POISSON));
 		Collections.sort(pizzas);
 	}
@@ -51,6 +51,7 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 		return -1;
 	}
 
+	@Override
 	public Optional<Pizza> find(String code) {
 		for (Pizza pizza : pizzas) {
 			if (code.equalsIgnoreCase(pizza.getCode())) {

@@ -1,30 +1,31 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>dta</groupId>
-    <artifactId>tanguy-pizzeria</artifactId>
-    <version>1.0</version>
-    <relativePath>../</relativePath>
-  </parent>
-  <artifactId>pizzeria-admin-app</artifactId>
-  <packaging>war</packaging>
-  <name>pizzeria-admin-app Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>javax.servlet</groupId>
-    	<artifactId>servlet-api</artifactId>
-    	<version>3.0-alpha-1</version>
-    	<scope>provided</scope>
-	</dependency>
-	<dependency>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>dta</groupId>
+		<artifactId>tanguy-pizzeria</artifactId>
+		<version>1.0</version>
+		<relativePath>../</relativePath>
+	</parent>
+	<artifactId>pizzeria-admin-app</artifactId>
+	<packaging>war</packaging>
+	<name>pizzeria-admin-app Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0-alpha-1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>dta</groupId>
 			<artifactId>tanguy-pizzeria-dao</artifactId>
 		</dependency>
@@ -32,8 +33,12 @@
 			<groupId>dta</groupId>
 			<artifactId>tanguy-pizzeria-model</artifactId>
 		</dependency>
-  </dependencies>
-  <build>
-    <finalName>pizzeria-admin-app</finalName>
-  </build>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>pizzeria-admin-app</finalName>
+	</build>
 </project>

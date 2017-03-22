@@ -12,20 +12,10 @@ import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.model.Pizza;
 
-/**
- * Servlet implementation class EditerPizzaController
- */
 public class EditerPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private IDao<Pizza, String> pizzaDao = DaoTools.DEFAULT_PIZZA_DAO;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public EditerPizzaController() {
-		super();
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
