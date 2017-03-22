@@ -13,6 +13,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
+<script src="<c:url value='/js/jquery-1.12.4.min.js'></c:url>"></script>
 <title>Lister les Pizzas</title>
 </head>
 <body>
@@ -40,7 +41,7 @@
 						<th align="left">Catégorie</th>
 						<th align="Right">Image</th>
 						<th align="Right"><div>
-								<a href="#" class="btn btn-success" role="button"><span
+								<a href="<%=request.getContextPath()%>/pizzas/new" class="btn btn-success" role="button"><span
 									class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 							</div></th>
 					</tr>
@@ -53,33 +54,32 @@
 							<td>${pizza.nom}</td>
 							<td>${pizza.prix}</td>
 							<td>${pizza.categorie}</td>
-										
-						<td>
-							<div class="col-md-2">
 
-								<img
-									src="<%=request.getContextPath()%>/img/${pizza.code}.jpg"
-									height=100 width=150>
-							</div>
-						</td>
+							<td>
+								<div class="col-md-2">
 
-						<td>
-							<div>
-								<a
-									href="<%=request.getContextPath()%>/pizzas/edit?code=${pizza.code}"
-									class="btn btn-warning" role="button"><span
-									class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-							</div>
-							<hr>
-							<div>
-								<a href="#" class="btn btn-danger" role="button"><span
-									class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-							</div>
+									<img src="<%=request.getContextPath()%>/img/${pizza.code}.jpg"
+										height=100 width=150>
+								</div>
+							</td>
+
+							<td>
+								<div>
+									<a
+										href="<%=request.getContextPath()%>/pizzas/edit?code=${pizza.code}"
+										class="btn btn-warning" role="button"><span
+										class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+								</div>
+								<hr>
+								<div>
+									<a href="#" class="btn btn-danger" role="button"><span
+										class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+								</div>
 
 
-						</td>
+							</td>
 
-					</tr>
+						</tr>
 					</c:forEach>
 
 				</tbody>

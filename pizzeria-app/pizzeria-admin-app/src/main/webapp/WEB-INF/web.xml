@@ -29,6 +29,12 @@
 		<description></description>
 		<servlet-class>fr.pizzeria.admin.tool.EditerPizzaController</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>NewPizzaController</servlet-name>
+		<display-name>NewPizzaController</display-name>
+		<description></description>
+		<servlet-class>fr.pizzeria.admin.tool.NewPizzaController</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>PizzaServletWebApi</servlet-name>
@@ -48,6 +54,10 @@
 	<servlet-mapping>
 		<servlet-name>EditerPizzaController</servlet-name>
 		<url-pattern>/pizzas/edit</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>NewPizzaController</servlet-name>
+		<url-pattern>/pizzas/new</url-pattern>
 	</servlet-mapping>
 </web-app>
 
