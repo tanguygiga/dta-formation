@@ -3,6 +3,7 @@ package fr.pizzeria.dao;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import fr.pizzeria.exception.DeleteException;
 import fr.pizzeria.exception.SaveException;
@@ -48,6 +49,15 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 			}
 		}
 		return -1;
+	}
+
+	public Optional<Pizza> find(String code) {
+		for (Pizza pizza : pizzas) {
+			if (code.equalsIgnoreCase(pizza.getCode())) {
+				return Optional.of(pizza);
+			}
+		}
+		return Optional.empty();
 	}
 
 	@Override

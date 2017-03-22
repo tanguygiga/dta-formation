@@ -59,13 +59,13 @@
 
 					<td>
 						<div>
-							<a href="/pizzas/edit?code=<%=pizza.getCode()%>"
+							<a href="<%=request.getContextPath()%>/pizzas/edit?code=<%=pizza.getCode()%>"
 								class="btn btn-default" role="button"><span
 								class="glyphicon glyphicon-edit" aria-hidden="true"> </span></a>
 						</div>
 
 						<div>
-							<a href="/pizzas/edit?code=<%=pizza.getCode()%>"
+							<a href="<%=request.getContextPath()%>/pizzas/edit?code=<%=pizza.getCode()%>"
 								class="btn btn-default" role="button"><span
 								class="glyphicon glyphicon-remove" aria-hidden="true"> </span></a>
 						</div>

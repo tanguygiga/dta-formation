@@ -1,4 +1,4 @@
-package webapp;
+package fr.pizzeria.admin.tool;
 
 import java.io.IOException;
 
