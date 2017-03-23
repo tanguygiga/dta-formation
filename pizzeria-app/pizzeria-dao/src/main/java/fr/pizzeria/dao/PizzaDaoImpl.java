@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import fr.pizzeria.exception.DeleteException;
 import fr.pizzeria.exception.SaveException;
@@ -42,6 +43,23 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 		}
 	}
 
+	@Override
+	public void update(String code, Pizza pizza) {
+		int index = IntStream.range(0, pizzas.size()).filter(i -> pizzas.get(i).getCode().equals(code)).findFirst()
+				.getAsInt();
+		if (index > -1) {
+			pizzas.set(index, pizza);
+			Collections.sort(pizzas);
+		} else {
+			throw new UpdateException();
+		}
+	}
+
+	@Override
+	public void delete(String code) throws DeleteException {
+		pizzas.removeIf(p -> p.getCode().equals(code));
+	}
+
 	private int findPizza(String code) {
 		for (Pizza pizza : pizzas) {
 			if (code.equalsIgnoreCase(pizza.getCode())) {
@@ -51,7 +69,6 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 		return -1;
 	}
 
-	@Override
 	public Optional<Pizza> find(String code) {
 		for (Pizza pizza : pizzas) {
 			if (code.equalsIgnoreCase(pizza.getCode())) {
@@ -61,11 +78,10 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 		return Optional.empty();
 	}
 
-	@Override
-	public void update(String codePizza, Pizza newPizza) {
-		int index = findPizza(codePizza);
+	public void update2(String code, Pizza pizza) {
+		int index = findPizza(code);
 		if (index > -1) {
-			pizzas.set(index, newPizza);
+			pizzas.set(index, pizza);
 			Collections.sort(pizzas);
 		} else {
 			throw new UpdateException();
@@ -73,8 +89,7 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 
 	}
 
-	@Override
-	public void delete(String codePizza) {
+	public void delete2(String codePizza) {
 		int index = findPizza(codePizza);
 		if (index > -1) {
 			pizzas.remove(index);
