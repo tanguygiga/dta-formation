@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter(urlPatterns = { "/*" })
+@WebFilter(urlPatterns = { "/pizzas/*", "/technique" })
 public class LoginFilter implements Filter {
 
 	private FilterConfig config = null;
@@ -44,6 +44,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		HttpSession session = request.getSession(false);
+
 		String loginURI = request.getContextPath() + "/login";
 
 		boolean loggedIn = session != null && session.getAttribute("connected") != null;

@@ -49,6 +49,8 @@
 					<tr>
 						<th align="left">id</th>
 						<th align="left">log</th>
+						<th align="left">/</th>
+
 
 					</tr>
 				</thead>
@@ -59,6 +61,8 @@
 						<tr>
 							<td>${test.index}</td>
 							<td>${log}</td>
+							<td>${log.path }</td>
+
 						</tr>
 					</c:forEach>
 

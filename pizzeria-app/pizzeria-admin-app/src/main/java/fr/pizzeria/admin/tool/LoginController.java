@@ -19,7 +19,8 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/login.jsp").forward(request, response);
+
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
 
 	/**
@@ -29,15 +30,20 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if ("admin@pizzeria.fr".equals(request.getParameter("email"))
-				&& "admin".equals(request.getParameter("password"))) {
+
+		String loginURI = request.getContextPath() + "/login";
+
+		String mail = request.getParameter("email");
+		String pass = request.getParameter("password");
+
+		if ("admin@pizzeria.fr".equals(mail) && "admin".equals(pass)) {
 			request.getSession().setAttribute("connected", true);
 			request.getSession().setAttribute("email", "admin@pizzeria.fr");
 			response.sendRedirect(request.getContextPath() + "/pizzas/list");
 
 		} else {
 			request.setAttribute("connected", false);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/login.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher(loginURI).forward(request, response);
 
 		}
 	}

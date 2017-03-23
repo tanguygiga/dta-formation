@@ -7,7 +7,7 @@ public class Log {
 	private long before;
 	private long duration;
 
-	public Log() {
+	public Log(String path, long after, long before) {
 
 		this.path = null;
 		this.after = 0;
@@ -41,10 +41,6 @@ public class Log {
 
 	public void setBefore(long before) {
 		this.before = before;
-	}
-
-	public void setDuration(long duration) {
-		this.duration = duration;
 	}
 
 }

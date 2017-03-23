@@ -13,6 +13,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
+import fr.pizzeria.model.Log;
+
 /**
  * Servlet Filter implementation class TimerFilter
  */
@@ -36,11 +38,11 @@ public class TimerFilter implements Filter {
 		long after = System.currentTimeMillis();
 		String path = ((HttpServletRequest) req).getRequestURI();
 
-		List<String> log = (List<String>) config.getServletContext().getAttribute("logs");
+		List<Log> log = (List<Log>) config.getServletContext().getAttribute("logs");
 		if (log == null) {
-			log = new ArrayList<String>();
+			log = new ArrayList<Log>();
 		}
-		log.add(path + " : " + (after - before));
+		log.add(new Log(path, after, before));
 		config.getServletContext().setAttribute("logs", log);
 
 	}
