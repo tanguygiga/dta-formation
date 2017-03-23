@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.tool;
+package fr.pizzeria.admin.tool.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.pizzeria.admin.tool.DaoTools;
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.dao.PizzaDaoImpl;
 import fr.pizzeria.model.Pizza;
