@@ -18,8 +18,17 @@
 </head>
 <body>
 	<h1>Gestion des pizzas</h1>
-	<a href="AjouterPizzas.html">Ajout</a> /
-	<a href="index.html">Retour à l'accueil</a>
+	<a href="new">Ajout</a> /
+	<a href="../login">Retour à l'accueil</a>
+
+	<div>
+		<p>Identifié en tant que : ${email}</p>
+			<a
+				href="<%=request.getContextPath()%>/logout"
+				class="btn btn-danger btn-xs" role="button"><span
+				class="glyphicon glyphicon-off" aria-hidden="true"></span>Déconnexion</a>
+		
+	</div>
 
 
 	<div class="panel panel-default row">
@@ -41,7 +50,8 @@
 						<th align="left">Catégorie</th>
 						<th align="Right">Image</th>
 						<th align="Right"><div>
-								<a href="<%=request.getContextPath()%>/pizzas/new" class="btn btn-success" role="button"><span
+								<a href="<%=request.getContextPath()%>/pizzas/new"
+									class="btn btn-success" role="button"><span
 									class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 							</div></th>
 					</tr>
@@ -52,7 +62,7 @@
 						<tr>
 							<td>${pizza.code}</td>
 							<td>${pizza.nom}</td>
-							<td>${pizza.prix}</td>
+							<td>${pizza.prix}€</td>
 							<td>${pizza.categorie}</td>
 
 							<td>
