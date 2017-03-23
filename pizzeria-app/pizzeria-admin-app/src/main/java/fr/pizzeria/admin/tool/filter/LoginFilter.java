@@ -1,4 +1,4 @@
-package fr.pizzeria.admin.tool;
+package fr.pizzeria.admin.tool.filter;
 
 import java.io.IOException;
 
