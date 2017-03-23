@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LogoutController
+ * Servlet implementation class TechniqueController
  */
-@WebServlet("/logout")
-public class LogoutController extends HttpServlet {
+@WebServlet("/technique")
+public class TechniqueController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -22,13 +22,7 @@ public class LogoutController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String loginURI = request.getContextPath() + "/login";
-
-		request.getSession().invalidate();
-
-		response.sendRedirect(loginURI);
-
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/technique.jsp").forward(request, response);
 	}
 
 }

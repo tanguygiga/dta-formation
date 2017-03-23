@@ -18,16 +18,21 @@
 </head>
 <body>
 	<h1>Gestion des pizzas</h1>
-	<a href="new">Ajout</a> /
-	<a href="../login">Retour à l'accueil</a>
+
+	<ol class="breadcrumb">
+		<li><a href="../login">Login</a></li>
+		<li><a href="#">Pizzas</a></li>
+		<li class="active">Liste</li>
+	</ol>
 
 	<div>
-		<p>Identifié en tant que : ${email}</p>
-			<a
-				href="<%=request.getContextPath()%>/logout"
-				class="btn btn-danger btn-xs" role="button"><span
-				class="glyphicon glyphicon-off" aria-hidden="true"></span>Déconnexion</a>
-		
+		<p>
+		Identifié en tant que <span class="label label-info">${email}</span>
+		 </p>
+		<a href="<%=request.getContextPath()%>/logout"
+			class="btn btn-danger btn-xs" role="button"><span
+			class="glyphicon glyphicon-off" aria-hidden="true"></span>Déconnexion</a>
+
 	</div>
 
 
