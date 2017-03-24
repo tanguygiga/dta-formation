@@ -20,7 +20,7 @@
 	<a href="index.html">Retour à l'accueil</a>
 	<hr>
 
-	<form class="form-horizontal">
+	<form class="form-horizontal" method="post">
 		<fieldset>
 
 			<!-- Form Name -->
@@ -30,7 +30,7 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="textinput">Code</label>
 				<div class="col-md-4">
-					<input id="textinput" name="textinput" type="text"
+					<input id="textinput" name="code" type="text"
 						placeholder="code" class="form-control input-md"
 						required="">
 
@@ -41,7 +41,7 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="textinput">Nom</label>
 				<div class="col-md-4">
-					<input id="textinput" name="textinput" type="text"
+					<input id="textinput" name="nom" type="text"
 						placeholder="nom" class="form-control input-md"
 						required="">
 				</div>
@@ -52,7 +52,7 @@
 				<label class="col-md-4 control-label" for="appendedtext">Prix</label>
 				<div class="col-md-4">
 					<div class="input-group">
-						<input id="appendedtext" name="appendedtext" class="form-control"
+						<input id="appendedtext" name="prix" class="form-control"
 							placeholder="prix" type="text" required="">
 						<span class="input-group-addon">€</span>
 					</div>
@@ -61,9 +61,9 @@
 
 			<!-- Select Basic -->
 			<div class="form-group">
-				<label class="col-md-4 control-label" for="selectbasic">Catégorie</label>
+				<label class="col-md-4 control-label" for="categorie">Catégorie</label>
 				<div class="col-md-4">
-					<select id="selectbasic" name="selectbasic" class="form-control">
+					<select id="selectbasic" name="categorie" class="form-control">
 						<option value="VIANDE">VIANDE</option>
 						<option value="POISSON">POISSON</option>
 						<option value="VEGETARIEN">VEGETARIEN</option>
@@ -72,23 +72,13 @@
 			</div>
 
 
-			<!-- File Button -->
-			<div class="form-group">
-				<label class="col-md-4 control-label" for="filebutton">Image</label>
-				<div class="col-md-4">
-					<input id="filebutton" name="filebutton" class="input-file"
-						type="file">
-						
-				</div>
-				
-			</div>
-
+			
 			<!-- Button -->
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="singlebutton"></label>
 				<div class="col-md-4">
-					<button id="singlebutton" name="singlebutton"
-						class="btn btn-success">Ajouter</button>
+					<input type="submit" id="singlebutton" name="singlebutton"
+						class="btn btn-success" value="Ajouter">
 				</div>
 			</div>
 

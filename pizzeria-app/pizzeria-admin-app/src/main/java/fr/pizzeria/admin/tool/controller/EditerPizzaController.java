@@ -1,72 +1,50 @@
 package fr.pizzeria.admin.tool.controller;
 
 import java.io.IOException;
-import java.util.Optional;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.admin.metier.PizzaService;
-import fr.pizzeria.exception.DaoException;
+import fr.pizzeria.admin.metier.PizzaServiceEJB;
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 @WebServlet("/pizzas/edit")
 public class EditerPizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@Inject
-	private PizzaService pizzaDao;
+	@EJB
+	private PizzaServiceEJB pizzaEJB;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String code = request.getParameter("code");
-		Optional<Pizza> optPizza = null;
 
-		try {
-			optPizza = pizzaDao.find(code);
-		} catch (DaoException e) {
-			e.printStackTrace();
-		}
-
-		if (optPizza.isPresent()) {
-			request.setAttribute("updatePizza", optPizza.get());
-			this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/editerPizza.jsp").forward(request,
-					response);
-		} else {
-			response.setStatus(404);
-		}
+		Pizza pizza = pizzaEJB.find(request.getParameter("code"));
+		request.setAttribute("updatePizza", pizza);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/editerPizza.jsp").forward(request,
+				response);
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
-	}
 
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
-	@Override
-	protected void doPut(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-	}
+		String code = request.getParameter("code");
+		String nom = request.getParameter("nom");
+		Double prix = Double.parseDouble(request.getParameter("prix"));
+		CategoriePizza categorie = CategoriePizza.valueOf(request.getParameter("categorie"));
 
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
-	@Override
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+		String old_code = request.getParameter("old_code");
+		Pizza pizza = new Pizza(code, nom, prix, categorie);
+
+		pizzaEJB.update(old_code, pizza);
+		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 	}
 
 }

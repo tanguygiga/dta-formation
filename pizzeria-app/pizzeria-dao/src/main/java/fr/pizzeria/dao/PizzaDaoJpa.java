@@ -23,7 +23,7 @@ public class PizzaDaoJpa implements IDao<Pizza, String> {
 	public List<Pizza> read() throws StockageException {
 		EntityManager em = emf.createEntityManager();
 
-		TypedQuery<Pizza> query = em.createNamedQuery("pizza.findAllPizzas", Pizza.class);
+		TypedQuery<Pizza> query = em.createNamedQuery("pizza.readAll", Pizza.class);
 		List<Pizza> pizzas = query.getResultList();
 
 		em.close();
@@ -74,7 +74,7 @@ public class PizzaDaoJpa implements IDao<Pizza, String> {
 	}
 
 	private Pizza getByCode(String code, EntityManager em) {
-		TypedQuery<Pizza> query = em.createNamedQuery("pizza.getById", Pizza.class);
+		TypedQuery<Pizza> query = em.createNamedQuery("pizza.getByCode", Pizza.class);
 
 		query.setParameter("code", code);
 		Pizza pizza = query.getSingleResult();

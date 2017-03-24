@@ -13,8 +13,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "pizza.findAllPizzas", query = "select p from Pizza p"),
-		@NamedQuery(name = "pizza.getById", query = "select p from Pizza p where p.code = :code") })
+@NamedQueries({ @NamedQuery(name = "pizza.readAll", query = "select p from Pizza p"),
+		@NamedQuery(name = "pizza.getByCode", query = "select p from Pizza p where p.code = :code") })
 public class Pizza implements Comparable<Pizza> {
 
 	@Id

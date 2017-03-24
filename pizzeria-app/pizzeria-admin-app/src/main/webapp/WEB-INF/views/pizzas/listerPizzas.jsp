@@ -57,7 +57,7 @@
 						<th align="Right"><div>
 								<a href="<%=request.getContextPath()%>/pizzas/new"
 									class="btn btn-success" role="button"><span
-									class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+									class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter</a>
 							</div></th>
 					</tr>
 				</thead>
@@ -67,7 +67,7 @@
 						<tr>
 							<td>${pizza.code}</td>
 							<td>${pizza.nom}</td>
-							<td>${pizza.prix}€</td>
+							<td>${pizza.prix} €</td>
 							<td>${pizza.categorie}</td>
 
 							<td>
@@ -83,12 +83,12 @@
 									<a
 										href="<%=request.getContextPath()%>/pizzas/edit?code=${pizza.code}"
 										class="btn btn-warning" role="button"><span
-										class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+										class="glyphicon glyphicon-edit" aria-hidden="true"></span> Modifier</a>
 								</div>
 								<hr>
 								<div>
 									<a href="#" class="btn btn-danger" role="button"><span
-										class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+										class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer</a>
 								</div>
 
 
