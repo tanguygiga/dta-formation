@@ -60,7 +60,7 @@ public class Pizza implements Comparable<Pizza> {
 		return nom;
 	}
 
-	public double getPrix() {
+	public Double getPrix() {
 		return prix;
 	}
 

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.pizzeria.admin.metier.PizzaServiceEJB;
+import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -46,8 +47,12 @@ public class NewPizzaController extends HttpServlet {
 
 		Pizza pizza = new Pizza(code, nom, prix, categorie);
 
-		pizzaEJB.create(pizza);
-		response.sendRedirect(request.getContextPath() + "/pizzas/list");
+		try {
+			pizzaEJB.create(pizza);
+			response.sendRedirect(request.getContextPath() + "/pizzas/list");
+		} catch (StockageException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
