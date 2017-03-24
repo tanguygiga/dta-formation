@@ -25,19 +25,20 @@ public class EditerPizzaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String code = request.getParameter("code");
+		Optional<Pizza> optPizza = null;
+
 		try {
-			Optional<Pizza> optPizza = pizzaDao.find(code);
-
-			if (optPizza.isPresent()) {
-				request.setAttribute("updatePizza", optPizza.get());
-				this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/editerPizza.jsp").forward(request,
-						response);
-			} else {
-				response.setStatus(404);
-			}
-
+			optPizza = pizzaDao.find(code);
 		} catch (DaoException e) {
+			e.printStackTrace();
+		}
 
+		if (optPizza.isPresent()) {
+			request.setAttribute("updatePizza", optPizza.get());
+			this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/editerPizza.jsp").forward(request,
+					response);
+		} else {
+			response.setStatus(404);
 		}
 
 	}
