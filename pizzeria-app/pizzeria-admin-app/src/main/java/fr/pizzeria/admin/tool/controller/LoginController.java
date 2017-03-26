@@ -44,13 +44,11 @@ public class LoginController extends HttpServlet {
 		if ("admin@pizzeria.fr".equals(mail) && "admin".equals(pass)) {
 			request.getSession().setAttribute("connected", true);
 			request.getSession().setAttribute("email", "admin@pizzeria.fr");
+			
 			ImportData importData = new ImportData();
 			List<Pizza> pizzas = importData.importer();
-
-			for (Pizza pizza : pizzas) {
-				pizzaEJB.create(pizza);
-
-			}
+			for (Pizza pizza : pizzas) {pizzaEJB.create(pizza);}
+			
 			response.sendRedirect(request.getContextPath() + "/pizzas/list");
 
 		} else {

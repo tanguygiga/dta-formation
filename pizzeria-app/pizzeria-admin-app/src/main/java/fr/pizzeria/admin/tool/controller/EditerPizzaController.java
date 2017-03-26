@@ -24,26 +24,24 @@ public class EditerPizzaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Pizza pizza = pizzaEJB.find(request.getParameter("code"));
-		request.setAttribute("updatePizza", pizza);
+		String oldCode = request.getParameter("code");
+		request.setAttribute("pizza", pizzaEJB.find(oldCode));
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/editerPizza.jsp").forward(request,
 				response);
-
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String code = request.getParameter("code");
+		String oldCode = request.getParameter("oldCode");
+
+		String newCode = request.getParameter("newCode");
 		String nom = request.getParameter("nom");
 		Double prix = Double.parseDouble(request.getParameter("prix"));
 		CategoriePizza categorie = CategoriePizza.valueOf(request.getParameter("categorie"));
 
-		String old_code = request.getParameter("old_code");
-		Pizza pizza = new Pizza(code, nom, prix, categorie);
-
-		pizzaEJB.update(old_code, pizza);
+		pizzaEJB.update(oldCode, new Pizza(newCode, nom, prix, categorie));
 		response.sendRedirect(request.getContextPath() + "/pizzas/list");
 	}
 
