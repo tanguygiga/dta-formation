@@ -13,30 +13,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet Filter implementation class LoginFilter
- */
 @WebFilter(urlPatterns = { "/pizzas/*", "/technique" })
 public class LoginFilter implements Filter {
 
-	private FilterConfig config = null;
-
 	@Override
 	public void init(FilterConfig config) throws ServletException {
-		this.config = config;
 		config.getServletContext().log("LoginFilter initialized");
 	}
 
-	/**
-	 * @see Filter#destroy()
-	 */
 	@Override
 	public void destroy() {
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {

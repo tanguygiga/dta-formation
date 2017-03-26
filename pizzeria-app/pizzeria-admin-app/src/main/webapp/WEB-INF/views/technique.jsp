@@ -14,7 +14,7 @@
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 <script src="<c:url value='/js/jquery-1.12.4.min.js'></c:url>"></script>
-<title>Lister les Pizzas</title>
+<title>Technique</title>
 </head>
 <body>
 	<h1>Behind the scene</h1>
