@@ -31,7 +31,7 @@
 		</p>
 		<a href="<%=request.getContextPath()%>/logout"
 			class="btn btn-danger btn-xs" role="button"><span
-			class="glyphicon glyphicon-off" aria-hidden="true"></span>Déconnexion</a>
+			class="glyphicon glyphicon-off" aria-hidden="true"></span> Déconnexion</a>
 
 	</div>
 
@@ -84,16 +84,14 @@
 									<a
 										href="<%=request.getContextPath()%>/pizzas/edit?code=${pizza.code}"
 										class="btn btn-warning" role="button"><span
-										class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-										Modifier</a>
+										class="glyphicon glyphicon-edit" aria-hidden="true"></span> Modifier</a>
 								</div>
 								<hr>
 								<div>
 									<a
 										href="<%=request.getContextPath()%>/pizzas/delete?code=${pizza.code}"
 										class="btn btn-danger" role="button"><span
-										class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-										Supprimer</a>
+										class="glyphicon glyphicon-remove" aria-hidden="true"></span> Supprimer</a>
 								</div>
 							</td>
 
