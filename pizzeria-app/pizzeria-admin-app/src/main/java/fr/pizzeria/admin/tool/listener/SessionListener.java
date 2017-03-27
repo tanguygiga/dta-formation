@@ -32,12 +32,12 @@ public class SessionListener implements ServletContextListener {
 
 		pizzas.add(new Pizza("PEP", "Peperoni", 12.50, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza("MAR", "Margherita", 14.00, CategoriePizza.VEGETARIEN));
-		pizzas.add(new Pizza("REI", "La Reine", 11.50, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza("FRO", "La 4 Fromage", 12.00, CategoriePizza.VEGETARIEN));
-		pizzas.add(new Pizza("CAN", "La Cannibale", 12.50, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza("SAV", "La Savoyarde", 13.00, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza("ORI", "L'Orientale", 13.50, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza("SAU", "La Saumonette", 14.00, CategoriePizza.POISSON));
+		pizzas.add(new Pizza("REI", "Reine", 11.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("FRO", "4 Fromages", 12.00, CategoriePizza.VEGETARIEN));
+		pizzas.add(new Pizza("CAN", "Cannibale", 12.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("SAV", "Savoyarde", 13.00, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("ORI", "Orientale", 13.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("SAU", "Saumonette", 14.00, CategoriePizza.POISSON));
 		Collections.sort(pizzas);
 
 		for (Pizza pizza : pizzas) {
