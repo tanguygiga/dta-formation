@@ -70,7 +70,7 @@
 						<tr>
 							<td>${pizza.code}</td>
 							<td>${pizza.nom}</td>
-							<td>${pizza.prix}€</td>
+							<td>${pizza.prix} €</td>
 							<td>${pizza.categorie}</td>
 
 							<td>

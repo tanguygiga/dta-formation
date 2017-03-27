@@ -31,15 +31,9 @@ public class PizzaServiceEJB {
 
 	public void update(String code, Pizza p) throws StockageException {
 
-		Pizza pizza = find(code);
-
-		if (pizza != null) {
-			Integer id = pizza.getId();
-			pizza = p;
-			pizza.setId(id);
-			em.merge(pizza);
-		}
-
+		Integer id = find(code).getId();
+		p.setId(id);
+		em.merge(p);
 	}
 
 	public void delete(String code) throws StockageException {
