@@ -1,0 +1,49 @@
+package fr.pizzeria.admin.tool.listener;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import javax.ejb.EJB;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+
+import fr.pizzeria.admin.metier.PizzaServiceEJB;
+import fr.pizzeria.model.CategoriePizza;
+import fr.pizzeria.model.Pizza;
+
+@WebListener
+public class SessionListener implements ServletContextListener {
+
+	@EJB
+	private PizzaServiceEJB pizzaEJB;
+
+	@Override
+	public void contextDestroyed(ServletContextEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent arg0) {
+
+		List<Pizza> pizzas = new ArrayList<>();
+
+		pizzas.add(new Pizza("PEP", "Peperoni", 12.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("MAR", "Margherita", 14.00, CategoriePizza.VEGETARIEN));
+		pizzas.add(new Pizza("REI", "La Reine", 11.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("FRO", "La 4 Fromage", 12.00, CategoriePizza.VEGETARIEN));
+		pizzas.add(new Pizza("CAN", "La Cannibale", 12.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("SAV", "La Savoyarde", 13.00, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("ORI", "L'Orientale", 13.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("SAU", "La Saumonette", 14.00, CategoriePizza.POISSON));
+		Collections.sort(pizzas);
+
+		for (Pizza pizza : pizzas) {
+			pizzaEJB.create(pizza);
+		}
+
+	}
+
+}

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 
 <%@page import="java.util.List"%>
-<%@page import="fr.pizzeria.model.Pizza"%>
+<%@page import="fr.pizzeria.model.Pizza"%> 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
