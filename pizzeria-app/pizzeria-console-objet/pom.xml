@@ -6,24 +6,33 @@
 	</properties>
 	<artifactId>tanguy-pizzeria-console-objet</artifactId>
 	<dependencies>
+	
 		<dependency>
 			<groupId>dta</groupId>
 			<artifactId>tanguy-pizzeria-dao</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>dta</groupId>
 			<artifactId>tanguy-pizzeria-model</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
 			<version>1.5.9</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+		
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

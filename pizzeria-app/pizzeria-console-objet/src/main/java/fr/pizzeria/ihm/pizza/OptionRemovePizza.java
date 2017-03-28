@@ -1,13 +1,21 @@
 package fr.pizzeria.ihm.pizza;
 
+import java.util.Scanner;
+
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.Pizza;
 
 public class OptionRemovePizza extends OptionMenu {
 
-	public OptionRemovePizza(IhmTools ihmTools) {
-		super(ihmTools);
+	private Scanner scanner;
+	private IDao<Pizza, String> dao;
+
+	public OptionRemovePizza(IDao<Pizza, String> dao, Scanner scanner) {
+		super();
+		this.dao = dao;
+		this.scanner = scanner;
 	}
 
 	@Override
@@ -18,10 +26,10 @@ public class OptionRemovePizza extends OptionMenu {
 	@Override
 	public void execute() throws StockageException {
 		System.out.println("Veuillez choisir le code de la pizza a supprimer (99 pour abandonner)");
-		String pizzaPick = ihmTools.getSc().nextLine();
-		if (pizzaPick != "99") {
+		String code = this.scanner.nextLine();
+		if (code != "99") {
 			try {
-				ihmTools.getDaoPizza().delete(pizzaPick);
+				this.dao.delete(code);
 			} catch (StockageException e) {
 				throw new StockageException(e + "\n!!! Code incorrect, cette pizza n'existe pas");
 			}

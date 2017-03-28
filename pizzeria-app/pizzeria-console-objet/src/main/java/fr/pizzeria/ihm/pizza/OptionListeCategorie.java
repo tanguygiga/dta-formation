@@ -2,14 +2,16 @@ package fr.pizzeria.ihm.pizza;
 
 import java.util.stream.Collectors;
 
-import fr.pizzeria.model.*;
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.ihm.OptionMenu;
-import fr.pizzeria.ihm.tools.IhmTools;
+import fr.pizzeria.model.Pizza;
 
 public class OptionListeCategorie extends OptionMenu {
 
-	public OptionListeCategorie(IhmTools ihmTools) {
-		super(ihmTools);
+	private IDao<Pizza, String> dao;
+
+	public OptionListeCategorie(IDao<Pizza, String> dao) {
+		this.dao = dao;
 	}
 
 	@Override
@@ -19,12 +21,11 @@ public class OptionListeCategorie extends OptionMenu {
 
 	@Override
 	public void execute() {
-		ihmTools.getDaoPizza().read().stream().collect(Collectors.groupingBy(Pizza::getCategorie))
-				.forEach((k, v) -> {
-					System.out.println(k);
-					v.stream().forEach(System.out::println);
-					System.out.println();
-				});
+		this.dao.read().stream().collect(Collectors.groupingBy(Pizza::getCategorie)).forEach((k, v) -> {
+			System.out.println(k);
+			v.stream().forEach(System.out::println);
+			System.out.println();
+		});
 
 	}
 

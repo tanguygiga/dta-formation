@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+	<import resource="dao-memoire-config.xml" />
+
+	<bean id="menu" class="fr.pizzeria.ihm.Menu">
+		<constructor-arg value="**** Pizzeria Administration ****"></constructor-arg>
+		<constructor-arg ref="scanner"></constructor-arg>
+		<property name="actions">
+			<util:map>
+				<entry key="1" value-ref="read"></entry>
+				<entry key="2" value-ref="create"></entry>
+				<entry key="3" value-ref="update"></entry>
+				<entry key="4" value-ref="delete"></entry>
+			</util:map>
+		</property>
+	</bean>
+
+	<bean id="read" class="fr.pizzeria.ihm.pizza.OptionListePizzas">
+		<constructor-arg ref="dao"></constructor-arg>
+	</bean>
+
+	<bean id="create" class="fr.pizzeria.ihm.pizza.OptionCreatePizza">
+		<constructor-arg ref="dao"></constructor-arg>
+		<constructor-arg ref="tools"></constructor-arg>
+	</bean>
+
+	<bean id="update" class="fr.pizzeria.ihm.pizza.OptionUpdatePizza">
+		<constructor-arg ref="dao"></constructor-arg>
+		<constructor-arg ref="scanner"></constructor-arg>
+		<constructor-arg ref="tools"></constructor-arg>
+	</bean>
+
+	<bean id="delete" class="fr.pizzeria.ihm.pizza.OptionRemovePizza">
+		<constructor-arg ref="dao"></constructor-arg>
+		<constructor-arg ref="scanner"></constructor-arg>
+	</bean>
+
+	<bean id="tools" class="fr.pizzeria.ihm.tools.PizzaTools">
+		<constructor-arg ref="scanner"></constructor-arg>
+	</bean>
+
+	<bean id="scanner" class="java.util.Scanner">
+		<constructor-arg>
+			<util:constant static-field="java.lang.System.in" />
+		</constructor-arg>
+	</bean>
+
+</beans>

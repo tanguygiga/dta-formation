@@ -1,13 +1,8 @@
 package fr.pizzeria.ihm;
 
-import fr.pizzeria.ihm.tools.IhmTools;
-
 public abstract class OptionMenu {
 
-	protected IhmTools ihmTools;
-
-	public OptionMenu(IhmTools ihmTools) {
-		this.ihmTools = ihmTools;
+	public OptionMenu() {
 	}
 
 	public abstract String getLibelle();

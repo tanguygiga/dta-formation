@@ -1,11 +1,8 @@
 package fr.pizzeria.ihm;
 
-import fr.pizzeria.ihm.tools.IhmTools;
-
 public class OptionSortir extends OptionMenu {
 
-	public OptionSortir(IhmTools ihmTools) {
-		super(ihmTools);
+	public OptionSortir() {
 	}
 
 	@Override

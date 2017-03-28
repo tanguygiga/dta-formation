@@ -1,22 +1,29 @@
 package fr.pizzeria.ihm;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Scanner;
 
 import fr.pizzeria.exception.SoldeException;
 import fr.pizzeria.exception.StockageException;
-import fr.pizzeria.ihm.tools.IhmTools;
 
-public abstract class Menu {
-	protected String titre;
-	protected Map<Integer, OptionMenu> actions;
-	protected IhmTools ihmTools;
+public class Menu {
 
-	public Menu(String titre, IhmTools ihmTools) {
+	private String titre;
+	private Scanner scanner;
+	private Map<Integer, OptionMenu> actions;
+
+	public Menu(String titre, Scanner scanner) {
 		this.titre = titre;
-		this.ihmTools = ihmTools;
-		actions = new HashMap<>();
+		this.scanner = scanner;
+	}
+
+	public Map<Integer, OptionMenu> getActions() {
+		return actions;
+	}
+
+	public void setActions(Map<Integer, OptionMenu> actions) {
+		this.actions = actions;
 	}
 
 	public void afficher() {
@@ -32,14 +39,14 @@ public abstract class Menu {
 		int choix = 0;
 		while (choix != actions.size() + 1) {
 			afficher();
-			choix = ihmTools.getSc().nextInt();
-			ihmTools.getSc().nextLine();
+			choix = this.scanner.nextInt();
+			this.scanner.nextLine();
 
 			while (choix > actions.size() + 1) {
 				System.out.println("\n!!! Entrez une valeur autorisée !!!\n");
 				afficher();
-				choix = ihmTools.getSc().nextInt();
-				ihmTools.getSc().nextLine();
+				choix = this.scanner.nextInt();
+				this.scanner.nextLine();
 			}
 			if (choix != actions.size() + 1) {
 				try {
