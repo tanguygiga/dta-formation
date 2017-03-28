@@ -1,6 +1,6 @@
 package fr.pizzeria.console;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import fr.pizzeria.ihm.Menu;
 
@@ -13,12 +13,13 @@ public class PizzeriaAdminConsoleApp {
 	public static void main(String[] args)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 
-		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-config.xml");) {
+		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+				PizzeriaConfig.class);) {
 
 			Menu menu = context.getBean(Menu.class);
 			menu.executer();
 
-			System.out.println("\nAu revoir, à bientot !");
+			System.out.println("Au revoir, à bientot !");
 
 		}
 	}

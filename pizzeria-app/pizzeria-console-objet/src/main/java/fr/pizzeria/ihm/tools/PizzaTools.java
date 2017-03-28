@@ -2,13 +2,18 @@ package fr.pizzeria.ihm.tools;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+@Controller
 public class PizzaTools {
 
 	private Scanner scanner;
 
+	@Autowired
 	public PizzaTools(Scanner scanner) {
 		this.scanner = scanner;
 	}

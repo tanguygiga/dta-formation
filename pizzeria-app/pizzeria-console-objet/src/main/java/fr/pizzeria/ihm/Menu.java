@@ -1,21 +1,47 @@
 package fr.pizzeria.ihm;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
-import fr.pizzeria.exception.SoldeException;
-import fr.pizzeria.exception.StockageException;
+import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
+
+import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.ihm.pizza.CreatePizza;
+import fr.pizzeria.ihm.pizza.DeletePizza;
+import fr.pizzeria.ihm.pizza.ListeCategorie;
+import fr.pizzeria.ihm.pizza.ReadPizzas;
+import fr.pizzeria.ihm.pizza.UpdatePizza;
+
+@Controller
 public class Menu {
 
 	private String titre;
 	private Scanner scanner;
 	private Map<Integer, OptionMenu> actions;
+	@Autowired
+	private ApplicationContext ac;
 
-	public Menu(String titre, Scanner scanner) {
+	@Autowired
+	public Menu(@Value("${app.title}") String titre, Scanner scanner) {
 		this.titre = titre;
 		this.scanner = scanner;
+	}
+
+	@PostConstruct
+	public void init() {
+		this.actions = new HashMap<>();
+		this.actions.put(1, ac.getBean(ReadPizzas.class));
+		this.actions.put(2, ac.getBean(CreatePizza.class));
+		this.actions.put(3, ac.getBean(UpdatePizza.class));
+		this.actions.put(4, ac.getBean(DeletePizza.class));
+		this.actions.put(5, ac.getBean(ListeCategorie.class));
 	}
 
 	public Map<Integer, OptionMenu> getActions() {
@@ -51,7 +77,7 @@ public class Menu {
 			if (choix != actions.size() + 1) {
 				try {
 					actions.get(choix).execute();
-				} catch (StockageException | SoldeException e) {
+				} catch (StockageException e) {
 					throw new StockageException(e);
 				}
 			}

@@ -2,19 +2,24 @@ package fr.pizzeria.ihm.pizza;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.ihm.tools.PizzaTools;
 import fr.pizzeria.model.Pizza;
 
-public class OptionUpdatePizza extends OptionMenu {
+@Controller
+public class UpdatePizza extends OptionMenu {
 
 	private IDao<Pizza, String> dao;
 	private Scanner scanner;
 	private PizzaTools tools;
 
-	public OptionUpdatePizza(IDao<Pizza, String> dao, Scanner scanner, PizzaTools tools) {
+	@Autowired
+	public UpdatePizza(IDao<Pizza, String> dao, Scanner scanner, PizzaTools tools) {
 		this.dao = dao;
 		this.scanner = scanner;
 		this.tools = tools;

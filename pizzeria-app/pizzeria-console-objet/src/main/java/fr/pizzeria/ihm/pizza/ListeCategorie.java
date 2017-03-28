@@ -2,15 +2,20 @@ package fr.pizzeria.ihm.pizza;
 
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import fr.pizzeria.dao.IDao;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.model.Pizza;
 
-public class OptionListeCategorie extends OptionMenu {
+@Controller
+public class ListeCategorie extends OptionMenu {
 
 	private IDao<Pizza, String> dao;
 
-	public OptionListeCategorie(IDao<Pizza, String> dao) {
+	@Autowired
+	public ListeCategorie(IDao<Pizza, String> dao) {
 		this.dao = dao;
 	}
 

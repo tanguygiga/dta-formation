@@ -19,22 +19,22 @@
 		</property>
 	</bean>
 
-	<bean id="read" class="fr.pizzeria.ihm.pizza.OptionListePizzas">
+	<bean id="read" class="fr.pizzeria.ihm.pizza.ReadPizzas">
 		<constructor-arg ref="dao"></constructor-arg>
 	</bean>
 
-	<bean id="create" class="fr.pizzeria.ihm.pizza.OptionCreatePizza">
+	<bean id="create" class="fr.pizzeria.ihm.pizza.CreatePizza">
 		<constructor-arg ref="dao"></constructor-arg>
 		<constructor-arg ref="tools"></constructor-arg>
 	</bean>
 
-	<bean id="update" class="fr.pizzeria.ihm.pizza.OptionUpdatePizza">
+	<bean id="update" class="fr.pizzeria.ihm.pizza.UpdatePizza">
 		<constructor-arg ref="dao"></constructor-arg>
 		<constructor-arg ref="scanner"></constructor-arg>
 		<constructor-arg ref="tools"></constructor-arg>
 	</bean>
 
-	<bean id="delete" class="fr.pizzeria.ihm.pizza.OptionRemovePizza">
+	<bean id="delete" class="fr.pizzeria.ihm.pizza.DeletePizza">
 		<constructor-arg ref="dao"></constructor-arg>
 		<constructor-arg ref="scanner"></constructor-arg>
 	</bean>
