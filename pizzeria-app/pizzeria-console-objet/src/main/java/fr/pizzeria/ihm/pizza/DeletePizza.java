@@ -31,7 +31,7 @@ public class DeletePizza extends OptionMenu {
 	@Override
 	public void execute() throws StockageException {
 		System.out.println("Veuillez choisir le code de la pizza a supprimer (99 pour abandonner)");
-		String code = this.scanner.nextLine();
+		String code = scanner.nextLine();
 		if (code != "99") {
 			try {
 				this.dao.delete(code);

@@ -27,7 +27,7 @@ public class PizzeriaConfig {
 	}
 
 	@Bean
-	public PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+	public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
 		PropertySourcesPlaceholderConfigurer c = new PropertySourcesPlaceholderConfigurer();
 		c.setLocation(new ClassPathResource("application.properties"));
 		return c;

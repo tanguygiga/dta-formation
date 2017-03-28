@@ -18,12 +18,12 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 	public PizzaDaoImpl() {
 		pizzas.add(new Pizza("PEP", "Peperoni", 12.50, CategoriePizza.VIANDE));
 		pizzas.add(new Pizza("MAR", "Margherita", 14.00, CategoriePizza.VEGETARIEN));
-		pizzas.add(new Pizza("REI", "La Reine", 11.50, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza("FRO", "La 4 Fromage", 12.00, CategoriePizza.VEGETARIEN));
-		pizzas.add(new Pizza("CAN", "La Cannibale", 12.50, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza("SAV", "La Savoyarde", 13.00, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza("ORI", "L'Orientale", 13.50, CategoriePizza.VIANDE));
-		pizzas.add(new Pizza("SAU", "La Saumonette", 14.00, CategoriePizza.POISSON));
+		pizzas.add(new Pizza("REI", "Reine", 11.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("FRO", "4 Fromages", 12.00, CategoriePizza.VEGETARIEN));
+		pizzas.add(new Pizza("CAN", "Cannibale", 12.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("SAV", "Savoyarde", 13.00, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("ORI", "Orientale", 13.50, CategoriePizza.VIANDE));
+		pizzas.add(new Pizza("SAU", "Saumonette", 14.00, CategoriePizza.POISSON));
 		Collections.sort(pizzas);
 	}
 
@@ -44,35 +44,41 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 
 	@Override
 	public Optional<Pizza> find(String code) {
-		for (Pizza pizza : pizzas) {
-			if (code.equalsIgnoreCase(pizza.getCode())) {
-				return Optional.of(pizza);
-			}
-		}
-		return Optional.empty();
+		return pizzas.stream().filter(p -> code.equalsIgnoreCase(p.getCode())).findFirst();
 	}
 
 	@Override
-	public void update(String code, Pizza pizza) {
-		Optional<Pizza> p = find(code);
-		int id = pizzas.indexOf(p);
-
+	public void update(String code, Pizza maj) {
+		Pizza p = find(code).get();
+		Integer id = pizzas.indexOf(p);
 		if (id > -1) {
-			pizzas.set(id, pizza);
+			pizzas.set(id, maj);
+			
+			System.out.println("Les modifications sont les suivantes :");
+			if (code != maj.getCode())
+				System.out.println("Code :\n" + code + " --> " + maj.getCode()+"\n");
+			if (!p.getNom().equals(maj.getNom()))
+				System.out.println("Nom :\n" + p.getNom() + " --> " + maj.getNom()+"\n");
+			if (!p.getPrix().equals(maj.getPrix()))
+				System.out.println("Prix :\n" + p.getPrix() + " --> " + maj.getPrix()+"\n");
+			if (!p.getCategorie().equals(maj.getCategorie()))
+				System.out.println("Catégorie :\n" + p.getCategorie() + " --> " + maj.getCategorie()+"\n");
+			
 			Collections.sort(pizzas);
+			
 		} else {
 			throw new UpdateException();
 		}
-
 	}
 
 	@Override
 	public void delete(String code) {
-		Optional<Pizza> p = find(code);
-		int id = pizzas.indexOf(p);
-
+		Pizza p = find(code).get();
+		Integer id = pizzas.indexOf(p);
 		if (id > -1) {
-			pizzas.remove(id);
+			pizzas.remove(p);
+			System.out.println("La pizza " + p.getNom() + " a été supprimée !\n");
+
 		} else {
 			throw new DeleteException();
 		}
