@@ -52,6 +52,20 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 		Integer id = pizzas.indexOf(p);
 		if (id > -1) {
 			pizzas.set(id, maj);
+
+			System.out.println("Les modifications sont les suivantes :");
+			if (code != maj.getCode())
+				System.out.println("Code :\n" + code + " --> " + maj.getCode() + "\n");
+
+			if (!p.getNom().equals(maj.getNom()))
+				System.out.println("Nom :\n" + p.getNom() + " --> " + maj.getNom() + "\n");
+
+			if (!(p.getPrix() == maj.getPrix()))
+				System.out.println("Prix :\n" + p.getPrix() + " --> " + maj.getPrix() + "\n");
+
+			if (!p.getCategorie().equals(maj.getCategorie()))
+				System.out.println("Catégorie :\n" + p.getCategorie() + " --> " + maj.getCategorie() + "\n");
+
 			Collections.sort(pizzas);
 
 		} else {
