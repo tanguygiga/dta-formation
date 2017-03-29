@@ -5,25 +5,21 @@ import java.util.Scanner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 
-import fr.pizzeria.dao.IDao;
-import fr.pizzeria.dao.PizzaDaoImpl;
-import fr.pizzeria.model.Pizza;
+import fr.pizzeria.dao.PizzaDaoSpringJpa;
+import fr.pizzeria.dao.SpringJpa.JpaCoreConfig;
 
 @Configuration
 @ComponentScan("fr.pizzeria.ihm")
+@Import({ JpaCoreConfig.class, PizzaDaoSpringJpa.class })
 public class PizzeriaConfig {
 
 	@Bean
 	public Scanner scanner() {
 		return new Scanner(System.in);
-	}
-
-	@Bean
-	public IDao<Pizza, String> dao() {
-		return new PizzaDaoImpl();
 	}
 
 	@Bean

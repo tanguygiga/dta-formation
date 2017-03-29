@@ -42,7 +42,6 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 		}
 	}
 
-	@Override
 	public Optional<Pizza> find(String code) {
 		return pizzas.stream().filter(p -> code.equalsIgnoreCase(p.getCode())).findFirst();
 	}
@@ -53,19 +52,19 @@ public class PizzaDaoImpl implements IDao<Pizza, String> {
 		Integer id = pizzas.indexOf(p);
 		if (id > -1) {
 			pizzas.set(id, maj);
-			
+
 			System.out.println("Les modifications sont les suivantes :");
 			if (code != maj.getCode())
-				System.out.println("Code :\n" + code + " --> " + maj.getCode()+"\n");
+				System.out.println("Code :\n" + code + " --> " + maj.getCode() + "\n");
 			if (!p.getNom().equals(maj.getNom()))
-				System.out.println("Nom :\n" + p.getNom() + " --> " + maj.getNom()+"\n");
+				System.out.println("Nom :\n" + p.getNom() + " --> " + maj.getNom() + "\n");
 			if (!p.getPrix().equals(maj.getPrix()))
-				System.out.println("Prix :\n" + p.getPrix() + " --> " + maj.getPrix()+"\n");
+				System.out.println("Prix :\n" + p.getPrix() + " --> " + maj.getPrix() + "\n");
 			if (!p.getCategorie().equals(maj.getCategorie()))
-				System.out.println("Catégorie :\n" + p.getCategorie() + " --> " + maj.getCategorie()+"\n");
-			
+				System.out.println("Catégorie :\n" + p.getCategorie() + " --> " + maj.getCategorie() + "\n");
+
 			Collections.sort(pizzas);
-			
+
 		} else {
 			throw new UpdateException();
 		}

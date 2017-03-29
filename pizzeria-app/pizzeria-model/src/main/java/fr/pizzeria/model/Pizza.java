@@ -68,6 +68,22 @@ public class Pizza implements Comparable<Pizza> {
 		return categorie;
 	}
 
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setPrix(Double prix) {
+		this.prix = prix;
+	}
+
+	public void setCategorie(CategoriePizza categorie) {
+		this.categorie = categorie;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

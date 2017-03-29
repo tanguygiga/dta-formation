@@ -151,6 +151,19 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			
+			<dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.194</version>
+                <scope>test</scope>
+            </dependency>
+            
+            <dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>1.5.9</version>
+		</dependency>
 
 		</dependencies>
 	</dependencyManagement>

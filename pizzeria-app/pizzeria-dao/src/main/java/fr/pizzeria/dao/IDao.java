@@ -1,7 +1,6 @@
 package fr.pizzeria.dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.StockageException;
@@ -20,7 +19,4 @@ public interface IDao<T, E> {
 		throw new DaoException("Pas encore implémentée");
 	}
 
-	default Optional<T> find(String code) throws DaoException {
-		throw new DaoException("Pas encore implémentée");
-	}
 }
