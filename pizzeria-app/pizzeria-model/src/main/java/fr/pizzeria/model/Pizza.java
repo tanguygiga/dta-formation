@@ -10,7 +10,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "pizza.readAll", query = "select p from Pizza p"),
@@ -116,11 +115,6 @@ public class Pizza implements Comparable<Pizza> {
 	@Override
 	public int compareTo(Pizza pizza) {
 		return this.code.compareTo(pizza.getCode());
-	}
-
-	@Override
-	public int hashCode() {
-		return new HashCodeBuilder(23, 31).append(code).toHashCode();
 	}
 
 	@Override

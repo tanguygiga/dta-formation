@@ -61,7 +61,6 @@
 			<artifactId>spring-aspects</artifactId> 
 		</dependency>
 		
-
 	</dependencies>
 
 	<build>
@@ -90,7 +89,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>fr.pizzeria.console.PizzeriaAdminConsoleApp</mainClass>
+							<mainClass>fr.pizzeria.test.PizzeriaAdminConsoleApp</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

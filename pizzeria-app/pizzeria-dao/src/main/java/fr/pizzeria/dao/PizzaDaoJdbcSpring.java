@@ -37,7 +37,7 @@ public class PizzaDaoJdbcSpring implements IDao<Pizza, String> {
 
 	@Override
 	public void update(String code, Pizza p) throws StockageException {
-		String sql = "UPDATE pizza SET nom=?, nom=?, prix =?, categorie=? WHERE code=? ";
+		String sql = "UPDATE pizza SET code=?, nom=?, prix =?, categorie=? WHERE code=? ";
 		this.jdbcTemplate.update(sql, p.getCode(), p.getNom(), p.getPrix(), p.getCategorie().name(), code);
 	}
 

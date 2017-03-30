@@ -9,5 +9,3 @@ CREATE TABLE `pizza` (
 
 INSERT INTO `pizza` (`id`, `categorie`, `code`, `nom`, `prix`) VALUES
 (1, 'VIANDE', 'TOT', 'toto', 45.27);
-INSERT INTO `pizza` (`id`, `categorie`, `code`, `nom`, `prix`) VALUES
-(2, 'POISSON', 'CAL', 'Calzone', 27.51);
