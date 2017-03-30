@@ -88,6 +88,11 @@ public class Pizza implements Comparable<Pizza> {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 
+		if (id != null) {
+			builder.append(id);
+			builder.append(": ");
+		}
+
 		if (code != null) {
 			builder.append(code);
 			builder.append(" - ");

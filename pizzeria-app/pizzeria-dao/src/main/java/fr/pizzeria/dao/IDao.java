@@ -15,7 +15,7 @@ public interface IDao<T, E> {
 
 	void delete(String code) throws StockageException;
 
-	default void importData(IDao<T, String> source) throws DaoException {
+	default void populate() throws StockageException, DaoException {
 		throw new DaoException("Pas encore implémentée");
 	}
 

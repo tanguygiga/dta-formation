@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 
-import fr.pizzeria.dao.PizzaDaoSpringJpa;
-import fr.pizzeria.dao.SpringJpa.JpaCoreConfig;
+import fr.pizzeria.dao.DataJpa.ConfigDataJpa;
+import fr.pizzeria.dao.DataJpa.PizzaDaoImplDataJpa;
 
 @Configuration
 @ComponentScan("fr.pizzeria.ihm")
-@Import({ JpaCoreConfig.class, PizzaDaoSpringJpa.class })
+@Import({ ConfigDataJpa.class, PizzaDaoImplDataJpa.class })
 public class PizzeriaConfig {
 
 	@Bean

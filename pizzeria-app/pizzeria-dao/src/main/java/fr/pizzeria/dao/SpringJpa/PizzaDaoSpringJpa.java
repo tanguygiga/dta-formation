@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.SpringJpa;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.pizzeria.dao.IDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 

@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 
@@ -101,12 +100,6 @@ public class PizzaDaoDataBase implements IDao<Pizza, String> {
 	@Override
 	public void delete(String codePizza) throws StockageException {
 
-	}
-
-	@Override
-	public void importData(IDao<Pizza, String> source) throws DaoException {
-		// List<List<Pizza>> listOfList = ListUtils.partition(source.findAll(),
-		// 3);
 	}
 
 }
