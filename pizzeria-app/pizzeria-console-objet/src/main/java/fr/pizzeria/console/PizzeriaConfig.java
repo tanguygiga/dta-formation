@@ -1,31 +1,17 @@
 package fr.pizzeria.console;
 
-import java.util.Scanner;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.io.ClassPathResource;
 
-import fr.pizzeria.dao.DataJpa.ConfigDataJpa;
-import fr.pizzeria.dao.DataJpa.PizzaDaoImplDataJpa;
+import fr.pizzeria.dao.aspects.GreffonCodeDepuisNom;
+import fr.pizzeria.dao.datajpa.ConfigDataJpa;
+import fr.pizzeria.dao.datajpa.PizzaDaoImplDataJpa;
+import fr.pizzeria.ihm.IhmConfig;
 
 @Configuration
-@ComponentScan("fr.pizzeria.ihm")
-@Import({ ConfigDataJpa.class, PizzaDaoImplDataJpa.class })
+@EnableAspectJAutoProxy
+@Import({ IhmConfig.class, ConfigDataJpa.class, PizzaDaoImplDataJpa.class, GreffonCodeDepuisNom.class })
 public class PizzeriaConfig {
 
-	@Bean
-	public Scanner scanner() {
-		return new Scanner(System.in);
-	}
-
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
-		PropertySourcesPlaceholderConfigurer c = new PropertySourcesPlaceholderConfigurer();
-		c.setLocation(new ClassPathResource("application.properties"));
-		return c;
-	}
 }

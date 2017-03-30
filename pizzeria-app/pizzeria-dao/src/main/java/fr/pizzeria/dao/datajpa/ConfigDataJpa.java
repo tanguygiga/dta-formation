@@ -1,4 +1,4 @@
-package fr.pizzeria.dao.DataJpa;
+package fr.pizzeria.dao.datajpa;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 // @ComponentScan("fr.pizzeria.dao")
-@EnableJpaRepositories("fr.pizzeria.dao.DataJpa")
+@EnableJpaRepositories("fr.pizzeria.dao.datajpa")
 public class ConfigDataJpa {
 
 	@Bean

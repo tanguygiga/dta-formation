@@ -1,4 +1,4 @@
-package fr.pizzeria.dao.DataJpa;
+package fr.pizzeria.dao.datajpa;
 
 import java.util.List;
 

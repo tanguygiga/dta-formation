@@ -1,9 +1,9 @@
 package fr.pizzeria.ihm;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
 
@@ -36,7 +36,7 @@ public class Menu {
 
 	@PostConstruct
 	public void init() {
-		this.actions = new HashMap<>();
+		this.actions = new TreeMap<>();
 		this.actions.put(1, ac.getBean(ReadPizzas.class));
 		this.actions.put(2, ac.getBean(CreatePizza.class));
 		this.actions.put(3, ac.getBean(UpdatePizza.class));
