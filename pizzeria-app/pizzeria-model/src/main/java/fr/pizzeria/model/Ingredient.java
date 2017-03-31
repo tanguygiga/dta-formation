@@ -1,7 +1,5 @@
 package fr.pizzeria.model;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,11 +17,10 @@ public class Ingredient {
 	private Integer id;
 	private String code;
 	private String nom;
-	private BigDecimal prix;
-	private BigDecimal quantite;
+	private Double prix;
+	private Double quantite;
 
-	public Ingredient(Integer id, String code, String nom, BigDecimal prix, BigDecimal quantite) {
-		this.id = id;
+	public Ingredient(String code, String nom, Double prix, Double quantite) {
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
@@ -58,19 +55,19 @@ public class Ingredient {
 		this.nom = nom;
 	}
 
-	public BigDecimal getPrix() {
+	public Double getPrix() {
 		return prix;
 	}
 
-	public void setPrix(BigDecimal prix) {
+	public void setPrix(Double prix) {
 		this.prix = prix;
 	}
 
-	public BigDecimal getQuantite() {
+	public Double getQuantite() {
 		return quantite;
 	}
 
-	public void setQuantite(BigDecimal quantite) {
+	public void setQuantite(Double quantite) {
 		this.quantite = quantite;
 	}
 

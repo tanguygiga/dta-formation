@@ -9,7 +9,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-// @ComponentScan("fr.pizzeria.dao")
 @EnableJpaRepositories("fr.pizzeria.dao.datajpa")
 @EnableTransactionManagement
 public class ConfigDataJpa {

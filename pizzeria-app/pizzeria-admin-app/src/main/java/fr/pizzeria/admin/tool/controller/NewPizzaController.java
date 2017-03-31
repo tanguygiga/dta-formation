@@ -28,7 +28,7 @@ public class NewPizzaController extends HttpServlet {
 			this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/newPizza.jsp").forward(request,
 					response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 
