@@ -103,32 +103,6 @@
 		</plugins>
 	</build>
 
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<dao.impl>PizzaDaoImpl</dao.impl>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-
-			<properties>
-				<dao.impl>PizzaDaoFichiers</dao.impl>
-			</properties>
-		</profile>
-		<profile>
-			<id>db</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<dao.impl>PizzaDaoDataBase</dao.impl>
-				<dao.source>PizzaDaoFichiers</dao.source>
-			</properties>
-		</profile>
-	</profiles>
-
 	<parent>
 		<groupId>dta</groupId>
 		<artifactId>tanguy-pizzeria</artifactId>
