@@ -1,23 +1,33 @@
 package fr.pizzeria.dao.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import fr.pizzeria.dao.aspects.GreffonCodeDepuisNom;
-import fr.pizzeria.dao.datajpa.ConfigDataJpa;
 import fr.pizzeria.dao.datajpa.PizzaDaoImplDataJpa;
 
 @Configuration
-// @ComponentScan("fr.pizzeria.dao")
-@Import({ ConfigDataJpa.class, PizzaDaoImplDataJpa.class, GreffonCodeDepuisNom.class })
 @EnableAspectJAutoProxy
+@Import({ PizzaDaoImplDataJpa.class, GreffonCodeDepuisNom.class })
+@EnableJpaRepositories("fr.pizzeria.dao.datajpa")
 public class DaoConfigTest {
 
-	/*
-	 * @Bean public DataSource dataSource() { return new
-	 * EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).addScript(
-	 * "init-schema.sql").build(); }
-	 */
+	@Bean
+	public LocalEntityManagerFactoryBean entityManagerFactory() {
+		return new LocalEntityManagerFactoryBean();
+
+	}
+
+	@Bean
+	public PlatformTransactionManager transactionManager() {
+		JpaTransactionManager txManager = new JpaTransactionManager();
+		return txManager;
+	}
 
 }

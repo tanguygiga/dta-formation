@@ -5,6 +5,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<artifactId>tanguy-pizzeria-console-objet</artifactId>
+	
 	<dependencies>
 
 		<dependency>
@@ -37,6 +38,7 @@
 			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -56,6 +58,7 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId> 
@@ -71,6 +74,7 @@
 			</resource>
 		</resources>
 		<plugins>
+		
 			<plugin>
 				<artifactId>maven-shade-plugin</artifactId>
 				<configuration>
@@ -84,6 +88,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>

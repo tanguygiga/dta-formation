@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.StockageException;
+import fr.pizzeria.model.Ingredient;
 
 public interface IDao<T, E> {
 
@@ -18,5 +19,10 @@ public interface IDao<T, E> {
 	default void populate() throws StockageException, DaoException {
 		throw new DaoException("Pas encore implémentée");
 	}
+
+	default Ingredient get(String code) throws StockageException, DaoException {
+		throw new DaoException("Pas encore implémentée");
+
+	};
 
 }
