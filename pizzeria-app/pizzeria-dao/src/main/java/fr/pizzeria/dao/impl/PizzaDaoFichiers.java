@@ -1,4 +1,4 @@
-package fr.pizzeria.dao;
+package fr.pizzeria.dao.impl;
 
 import java.io.IOException;
 import java.nio.file.Files;

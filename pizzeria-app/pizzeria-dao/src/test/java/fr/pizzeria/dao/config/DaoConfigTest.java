@@ -15,7 +15,7 @@ import fr.pizzeria.dao.datajpa.PizzaDaoImplDataJpa;
 @Configuration
 @EnableAspectJAutoProxy
 @Import({ PizzaDaoImplDataJpa.class, GreffonCodeDepuisNom.class })
-@EnableJpaRepositories("fr.pizzeria.dao.datajpa")
+@EnableJpaRepositories("fr.pizzeria.repo")
 public class DaoConfigTest {
 
 	@Bean

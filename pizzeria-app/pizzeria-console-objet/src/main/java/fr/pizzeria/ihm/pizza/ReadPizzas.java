@@ -3,7 +3,7 @@ package fr.pizzeria.ihm.pizza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import fr.pizzeria.dao.IDao;
+import fr.pizzeria.dao.impl.IDao;
 import fr.pizzeria.ihm.OptionMenu;
 import fr.pizzeria.model.Pizza;
 

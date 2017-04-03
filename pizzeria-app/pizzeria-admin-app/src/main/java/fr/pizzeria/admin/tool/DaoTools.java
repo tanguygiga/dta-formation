@@ -1,7 +1,7 @@
 package fr.pizzeria.admin.tool;
 
-import fr.pizzeria.dao.IDao;
-import fr.pizzeria.dao.PizzaDaoImpl;
+import fr.pizzeria.dao.impl.IDao;
+import fr.pizzeria.dao.impl.PizzaDaoImpl;
 import fr.pizzeria.model.Pizza;
 
 public interface DaoTools {

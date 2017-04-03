@@ -6,10 +6,11 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import fr.pizzeria.dao.IDao;
+import fr.pizzeria.dao.impl.IDao;
 import fr.pizzeria.exception.DaoException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Ingredient;
+import fr.pizzeria.repo.IngredientRepository;
 
 public class IngredientDaoImplDataJpa implements IDao<Ingredient, String> {
 

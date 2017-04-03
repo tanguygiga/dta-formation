@@ -1,4 +1,4 @@
-package fr.pizzeria.stock.controller;
+package fr.pizzeria.stock.springboot.controller;
 
 import java.util.List;
 

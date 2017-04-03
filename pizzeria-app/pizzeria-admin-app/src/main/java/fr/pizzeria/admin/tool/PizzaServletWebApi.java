@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.pizzeria.dao.IDao;
-import fr.pizzeria.dao.PizzaDaoImpl;
+import fr.pizzeria.dao.impl.IDao;
+import fr.pizzeria.dao.impl.PizzaDaoImpl;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;

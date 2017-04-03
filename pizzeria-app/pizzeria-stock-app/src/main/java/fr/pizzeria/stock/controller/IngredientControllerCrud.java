@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.pizzeria.dao.IDao;
+import fr.pizzeria.dao.impl.IDao;
 import fr.pizzeria.model.Ingredient;
 
 @Controller

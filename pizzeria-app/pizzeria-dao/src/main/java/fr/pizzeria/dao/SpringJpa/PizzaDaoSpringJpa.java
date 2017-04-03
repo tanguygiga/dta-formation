@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.pizzeria.dao.IDao;
+import fr.pizzeria.dao.impl.IDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 
