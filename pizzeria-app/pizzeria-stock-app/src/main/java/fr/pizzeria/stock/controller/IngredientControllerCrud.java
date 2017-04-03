@@ -27,4 +27,5 @@ public class IngredientControllerCrud {
 		return mav;
 
 	}
+
 }

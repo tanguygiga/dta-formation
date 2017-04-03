@@ -18,12 +18,13 @@
 		<module>pizzeria-model</module>
 		<module>pizzeria-admin-app</module>
 		<module>pizzeria-stock-app</module>
+		<module>pizzeria-stock-app-spring-boot</module>
 	</modules>
 
 	<build>
 		<pluginManagement>
 			<plugins>
-			
+
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.6.1</version>
@@ -32,27 +33,27 @@
 						<target>${java-version}</target>
 					</configuration>
 				</plugin>
-				
+
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>3.0.2</version>
 				</plugin>
-				
+
 				<plugin>
 					<artifactId>maven-shade-plugin</artifactId>
 					<version>3.0.0</version>
 				</plugin>
-				
+
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<version>3.0.0</version>
 				</plugin>
-				
+
 				<plugin>
 					<artifactId>properties-maven-plugin</artifactId>
 					<version>1.0.0</version>
 				</plugin>
-				
+
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>3.0.1</version>
@@ -66,14 +67,14 @@
 						</execution>
 					</executions>
 				</plugin>
-				
+
 				<plugin>
 					<artifactId>maven-war-plugin</artifactId>
 					<configuration>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
-				
+
 			</plugins>
 		</pluginManagement>
 		<finalName>pizzeria</finalName>
@@ -114,7 +115,7 @@
 				<artifactId>tanguy-pizzeria-model</artifactId>
 				<version>1.0</version>
 			</dependency>
-			
+
 			<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
 			<dependency>
 				<groupId>org.hibernate.javax.persistence</groupId>
@@ -125,6 +126,12 @@
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
+				<version>5.2.8.Final</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
 				<version>5.2.8.Final</version>
 			</dependency>
 
